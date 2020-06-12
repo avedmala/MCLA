@@ -1,0 +1,89 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{tocloft}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{esint}
+
+\graphicspath{{MC/images/}{LA/images/}}
+% fix for table of contents spacing
+\cftsetindents{section}{1em}{3em}
+% table of contents links
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% shortcuts for the standard unit vectors
+\newcommand{\ihat}{\:\boldsymbol{\hat{\textbf{i}}}}
+\newcommand{\jhat}{\:\boldsymbol{\hat{\textbf{j}}}}
+\newcommand{\khat}{\:\boldsymbol{\hat{\textbf{k}}}}
+
+% shortcuts for arrows when doing row operations
+\newcount\arrowcount
+\newcommand\arrows[1]{
+        \global\arrowcount#1
+        \ifnum\arrowcount>0
+                \begin{matrix}
+                \expandafter\nextarrow
+        \fi
+}
+\newcommand\nextarrow[1]{
+        \global\advance\arrowcount-1
+        \ifx\relax#1\relax\else \xrightarrow{#1}\fi
+        \ifnum\arrowcount=0
+                \end{matrix}
+        \else
+                \\
+                \expandafter\nextarrow
+        \fi
+}
+
+% shortcut for bold
+\def\*#1{\mathbf{#1}}
+
+\begin{document}
+
+\title{\Large{\textbf{MCLA Concice Review}}}
+\author{eMeSsBee}
+\date{May 2020}
+
+\pagenumbering{roman}
+\maketitle
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\part{Multivariable Calculus}
+
+\input{"MC/ch11.tex"}
+\input{"MC/ch12.tex"}
+\input{"MC/ch13.tex"}
+\input{"MC/ch14.tex"}
+\input{"MC/ch15.tex"}
+\input{"MC/ch16.tex"}
+\input{"MC/ch17.tex"}
+\input{"MC/ch18.tex"}
+% \input{"MC/appendix.tex"}
+
+\part{Linear Algebra}
+
+\input{"LA/ch1.tex"}
+\input{"LA/ch2.tex"}
+\input{"LA/ch3.tex"}
+\input{"LA/ch4.tex"}
+\input{"LA/ch5.tex"}
+\input{"LA/ch6.tex"}
+\input{"LA/ch7.tex"}
+% \input{"LA/appendix.tex"}
+
+\end{document}

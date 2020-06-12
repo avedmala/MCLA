@@ -1,0 +1,696 @@
+\chapter{Vector Spaces}
+
+\section{Vector Spaces and Subspaces}
+
+\subsection*{Definition}
+Let $V$ be a set on which addition and scalar multiplication have been defined.
+If u and v are in $V$, their sum is denoted by u + v, and if $c$ is a scalar multiple
+of u it is denoted by $c$u. If the following axioms hold for all u, v, and w in $V$
+and for all scalars $c$ and $d$, then $V$ is called a vector space and its elements are called vectors.
+\begin{enumerate}
+    \item $u+v$ is in $V$
+    \item $u+v=v+u$
+    \item $(u+v)+w=u+(v+w)$
+    \item There exists an element 0 in $V$, called a zero vector, such that $u + 0 = u$
+    \item For each u in $V$, there is an element $-u$ in $V$ such that $u + (-u) = 0$
+    \item $cu$ is in $V$
+    \item $c(u+v)=cu+cv$
+    \item $(c+d)u=cu+du$
+    \item $c(du)=(cd)u$
+    \item $1u=u$
+\end{enumerate}
+
+\subsection*{Example}
+Let $V$ be a vector space. Prove the following:
+\begin{enumerate}[(a)]
+    \item $0u = 0$
+    \item $c0 = 0$
+    \item $(-1) u = -u$
+    \item If $cu = 0$, then $c = 0$ or $u = 0$
+\end{enumerate}
+
+\subsection*{Solution}
+Let $V$ be a vector space. Prove the following:
+\begin{enumerate}[(a)]
+    \item \begin{align*}
+              0u & =(0+0)u=0u+0u \qquad 0u+(0(-u))=0u+(0u+(0(-u))) \\
+              0  & =0u+0\to0u=0
+          \end{align*}
+    \item \[c0=c(0+0)c0+c0 \qquad c0+(-c0)=c0+(c0+(-c0)) \quad 0=c0+0 \quad c0=0\]
+    \item \begin{align*}
+              (-1)u+u & =(-1)u+(1)u=(-1+1)u=0u=0                      \\
+              (-1)u+u & =0 \quad \text{and} \quad u+(-u)=0\to(-1)u=-u
+          \end{align*}
+    \item \[\text{assume } c\neq0 \qquad u=1u=\left(\frac{1}{c}c\right)u=\frac{1}{c}(cu)=\frac{1}{c}(0)=0\]
+\end{enumerate}
+
+\subsection*{Theorem}
+Let $V$ be a vector space and let W be a nonempty subset of $V$.
+Then $W$ is a subspace of $V$ if and only if the following conditions hold:
+\begin{enumerate}[(a)]
+    \item If $u$ and $v$ are in $W$, then $u + v$ is in $W$
+    \item If $u$ is in $W$ and $c$ is scalar, then $cu$ is in $W$
+\end{enumerate}
+
+\subsection*{Example}
+Let $\mathscr{D}$ be the set of all differentiable real-valued functions defined on
+$\mathbb{R}$. Show that $\mathscr{D}$ is a subspace of $\mathscr{F}$, the vector
+space of all real-valued functions defined on $\mathbb{R}$.
+
+\subsection*{Solution}
+\[(f+g)'=f'+g'\]
+so $\mathscr{D}$ is closed under addition.
+\[(cf)'=c(f')\]
+so $\mathscr{D}$ is closed under scalar multiplication. Therefore, $\mathscr{D}$
+is a subspace of $\mathscr{F}$.
+
+\subsection*{Example}
+Show that the set of all vectors of the form
+\[\begin{bmatrix}
+        a \\b\\-b\\a
+    \end{bmatrix}\]
+is a subspace of $\mathbb{R}^4$.
+
+\subsection*{Solution}
+Let $u$ and $v$ be in $W$ where $u=\begin{bmatrix}
+        a \\b\\-b\\a
+    \end{bmatrix}$ and $v=\begin{bmatrix}
+        c \\d\\-d\\c
+    \end{bmatrix}$
+\[u+v=\begin{bmatrix}
+        a \\b\\-b\\a
+    \end{bmatrix}+\begin{bmatrix}
+        c \\d\\-d\\c
+    \end{bmatrix}=\begin{bmatrix}
+        a+c \\b+d\\-b-d\\a+c
+    \end{bmatrix}=\begin{bmatrix}
+        a+c \\b+d\\-(b+d)\\a+c
+    \end{bmatrix}\]
+so $u+v$ is in $W$.
+
+Let $k$ be a scalar
+\[ku=k\begin{bmatrix}
+        a \\b\\-b\\a
+    \end{bmatrix}=\begin{bmatrix}
+        ka \\kb\\-kb\\ka
+    \end{bmatrix}\]
+so $ku$ is in $W$.
+
+$W$ is closed under addition and scalar multiplication, so $W$ is a subspace of $\mathbb{R}^4$.
+
+\section{Linear Independence, Basis, and Dimension}
+
+\subsection*{Definition}
+A set of vectors $\{\*v_1, \*v_2,\dots, \*v_k\}$ in a vector space $V$ is
+\textbf{linearly dependent} if there are scalars $c_1, c_2,\dots, c_k$, at
+least one of which is not zero, such that
+\[\{c_1\*v_1, c_2\*v_2,\dots, c_k\*v_k=0\}\]
+A set of vectors that is not linearly dependent is said to be \textbf{linearly independent}.
+
+\subsection*{Theorem}
+A set of vectors $\{\*v_1, \*v_2,\dots, \*v_k\}$ in a vector space $V$ is linearly
+dependent if and only if at least one of the vectors can be expressed as a linear combination
+of the others.
+
+\subsection*{Example}
+Show that set $\{1, x, x^2,\dots, x^n\}$ is linearly independent in $\mathscr{P}_n$.
+
+\subsection*{Solution}
+\[c+0\cdot1+c_1x+c_2s^2+\dots+c_nx^n=0\]
+Let $x=0\to c_0=0$ and repeat with each derivative
+\[c_1+2c_2x+\dots+(n-1)c_nx^{n-1}=0\]
+$c_1=0$ when $x=0$ \\
+We find that $c_0=c_1=c_2=\dots=c_n=0$ so $\{1, x, x^2,\dots, x^n\}$ is linearly independent.
+
+\subsection*{Bases}
+
+\subsection*{Definition}
+A subset $\mathcal{B}$ of a vector space $V$ is a basis for $V$ if
+\begin{enumerate}
+    \item $\mathcal{B}$ spans $V$
+    \item $\mathcal{B}$ is linearly independent
+\end{enumerate}
+
+\subsection*{Example}
+Show that $\mathcal{B}=\{1+x,x+x^2,1+x^2\}$ is a basis for $\mathscr{P}_2$.
+
+\subsection*{Solution}
+\[a(1+x)+b(x+x^2)+c(1+x^2)=0 \qquad a+ax+bx+bx^2+c+cx^2=1\]
+\[(a+c)+(a+b)x+(b+c)x^2=0 \quad a+c=0 \quad a+b=0 \quad b+c=0\]
+\[a=-c \quad -c+b=0 \quad c=b \quad 2b=0 \quad b=0 \quad a+0=0 \quad a=0 \quad 0+c=0 \quad c=0\]
+\[a=b=c=0\text{, so $\mathcal{B}$ is linearly independent}\]
+\[(a+c)+(a+b)x+(b+c)x^2=\alpha+\beta x+\gamma x^2\]
+\[a+c=\alpha \qquad a+b=\beta \qquad b+c=\gamma\]
+Since a solution exists, $\mathcal{B}$ spans $V\to\mathcal{B}$ is a basis for $\mathscr{P}_2$.
+
+\subsection*{Coordinates}
+
+\subsection*{Theorem}
+Let $V$ be a vector space and let $\mathcal{B}$ be a basis for $V$. For every vector
+$\*v$ in $V$, there is exactly one way to write $\*v$ as a linear combination
+of the basis vectors in $\mathcal{B}$.
+
+\subsection*{Definition}
+Let $\mathcal{B}=\{\*v_1,\*v_2,\dots,\*v_n\}$ be a basis for a vector space $V$.
+Let $\*v$ be a vectors in $V$, and write $\*v=c_1\*v_1+c_2\*v_2+\dots+c_n\*v_n$.
+Then $c_1,c_2,\dots,c_n$ are called the \textbf{coordinates of v with respect to $\mathcal{B}$},
+and the column vector
+\[[\*v]_\mathcal{B}=\begin{bmatrix}
+        c_1 \\c_2\\ \vdots \\ c_n
+    \end{bmatrix}\]
+is called the \textbf{coordinate vector of v with respect to $\mathcal{B}$}.
+
+\subsection*{Example}
+Find the coordinate vector $[p(x)]_\mathcal{B} \text{ of } p(x)=2-3x+5x^2$
+with respect to the standard basis $\mathcal{B}={1, x, x^2}$ of $\mathscr{P}_2$.
+
+\subsection*{Solution}
+\[a(1)+b(x)+c(x^2)=2-3x+5x^2\]
+\[a=2 \qquad b=-3 \qquad c=5\]
+\[[p(x)]_\mathcal{B}=\begin{bmatrix}
+        2 \\-3\\5
+    \end{bmatrix}\]
+
+\subsection*{Dimension}
+
+\subsection*{Theorem}
+Let $\mathcal{B}=\{\*v_1,\*v_2,\dots,\*v_n\}$ be a basis for vector space $V$.
+\begin{enumerate}[(a)]
+    \item Any set of more than $n$ vectors in $V$ must be linearly dependent.
+    \item Any set of fewer than $n$ vectors in $V$ cannot span $V$.
+\end{enumerate}
+
+\subsection*{Definition}
+A vector space $V$ is called \textbf{finite-dimensional} if it has a basis
+consisting of finitely many vectors. The dimension of $V$, denoted by dim $V$, is
+the number of vectors in a basis for $V$. The dimension of the zero vector space
+\{0\} is defined to be zero. A vector space that has no finite basis is called \textbf{infinite-dimensional}.
+
+\subsection*{Theorem}
+Let $V$ be a vector space with dim $V = n$. Then
+\begin{enumerate}[(a)]
+    \item Any linearly independent set in $V$ contains at most $n$ vectors.
+    \item Any spanning set for $V$ contains at least $n$ vectors.
+    \item Any linearly independent set of exactly $n$ vectors in $V$ is a basis for $V$.
+    \item Any spanning set for $V$ consisting of exactly $n$ vectors is a basis for $V$.
+    \item Any linearly independent set in $V$ can be extended to a basis for $V$.
+    \item Any spanning set for $V$ can be reduced to a basis for $V$.
+\end{enumerate}
+
+\subsection*{Example}
+In each case determine whether $S$ is a basis for $V$.
+\begin{enumerate}[(a)]
+    \item \[V=\mathscr{P}_2 \qquad S=\{1+x,2-x+x^2,3x-2x^2,-1+3x+x^2\}\]
+    \item \[V=M_{22} \qquad S=\left\{\begin{bmatrix}
+                  1 & 0 \\
+                  1 & 1
+              \end{bmatrix}\right\},\begin{bmatrix}
+                  0 & -1 \\
+                  1 & 0
+              \end{bmatrix},\begin{bmatrix}
+                  1 & 1  \\
+                  0 & -1
+              \end{bmatrix}\]
+    \item \[V=\mathscr{P}_2 \qquad S=\{1+x,x+x^2,1+x^2\}\]
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{enumerate}[(a)]
+    \item Since dim $(\mathscr{P}_2) = 3$ and $S$ contains four vectors, $S$ is linearly dependent.
+          Therefore, $S$ is not a basis for $\mathscr{P}_2$.
+    \item Since dim $(M_{22}) = 4$ and $S$ contains three vectors, $S$ cannot span $M_{22}$.
+          Therefore, $S$ is not a basis for $M_{22}$.
+    \item Since dim $(\mathscr{P}_2) = 3$ and $S$ contains three vectors, $S$ will
+          be a basis for $\mathscr{P}_2$ if it is linearly independent or if it spans.
+          It is easier to show that $S$ is linearly independent as we did in the first
+          example under the subtopic of bases. Therefore, $S$ is a basis for $\mathscr{P}_2$.
+\end{enumerate}
+
+\section{Change of Basis}
+
+\subsection*{Definition}
+Let $B={u_1,\dots,u_n}$ and $C={v_1,\dots,v_n}$ be bases for a vector space $V$.
+The $n\times n$ matrix whose columns are the coordinate vectors $[u_1]_C,\dots,[u_n]_C$
+of the vectors in $B$ with respect to $C$ is denoted by $P_{C\leftarrow B}$ and is
+called the \textbf{change-of-basis matrix} from $B$ to $C$. That is,
+\[P_{C\leftarrow B}=\begin{bmatrix}
+        [u_1]_C & [u_2]_C & \dots & [u_n]_C
+    \end{bmatrix}\]
+
+\subsection*{Theorem}
+Let $B={u_1,\dots,u_n}$ and $C={v_1,\dots,v_n}$ be bases for a vector space $V$
+and let $P_{C\leftarrow B}$ be the change-of-basis matrix from $B$ to $C$. Then
+\begin{enumerate}[(a)]
+    \item $P_{C\leftarrow B}[x]_b=[x]_c$ for all $x$ in $V$
+    \item $P_{C\leftarrow B}$ is the unique matrix $P$ with the property
+          that $P[x]_B = [x]_C$ for all $x$ in $V$
+    \item $P_{C\leftarrow B}$ is invertible and $(P_{C\leftarrow B})^{-1}=P_{B\leftarrow C}$
+\end{enumerate}
+
+\subsection*{Example}
+Find the change-of-basis matrices $P_{C\leftarrow B}$ and $P_{B\leftarrow C}$
+for the bases $B={1,x,x^2}$ and $C={1+x,x+x^2,1+x^2}$ of $\mathscr{P}_2$.
+Then find the coordinate vector of $p(x)=1+2x-x^2$ with respect to $C$.
+
+\subsection*{Solution}
+Changing toa standard basis is easy, so we find $P_{B\leftarrow C}$ first.
+Observe that thecoordinate vectors for $C$ in terms of $B$ are
+\[[1+x]_B=\begin{bmatrix}
+        1 \\1\\0
+    \end{bmatrix} \qquad [x+x^2]_B=\begin{bmatrix}
+        0 \\1\\1
+    \end{bmatrix} \qquad [1+x^2]_B=\begin{bmatrix}
+        1 \\0\\1
+    \end{bmatrix}\]
+\[P_{B\leftarrow C}=\begin{bmatrix}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+    \end{bmatrix}\]
+To find $P_{C\leftarrow B}$ we could express each vector in $B$ as a linear
+combination of the vectors in $C$, but it is much easier to use the fact that
+$P_{C\leftarrow B}=(P_{B\leftarrow C})^{-1}$. We find that
+\[P_{C\leftarrow B}=(P_{B\leftarrow C})^{-1}=\begin{bmatrix}
+        1/2  & 1/2  & -1/2 \\
+        -1/2 & 1/2  & 1/2  \\
+        1/2  & -1/2 & 1/2
+    \end{bmatrix}\]
+It now follows that
+\begin{align*}
+    [p(x)]_C & =P_{C\leftarrow B}[p(x)]_B                            \\
+             & =\begin{bmatrix}
+        1/2  & 1/2  & -1/2 \\
+        -1/2 & 1/2  & 1/2  \\
+        1/2  & -1/2 & 1/2
+    \end{bmatrix}\begin{bmatrix}
+        1 \\2\\-1
+    \end{bmatrix} \\
+             & =\begin{bmatrix}
+        2 \\0\\-1
+    \end{bmatrix}
+\end{align*}
+
+\subsection*{Theorem}
+$B={\*u_1,\dots,\*u_n}$ and $C={\*v_1,\dots,\*v_n}$ be bases for a vector space $V$.
+Let $B=[[\*u_1]E\dots[\*u_n]E]$ and $C=[[\*v_1]E\dots[\*v_n]E]$, where $\epsilon$ is any
+basis for $V$. Then row reduction applied to the $n\times 2n$ augmented matrix $[C\:|\:B]$ produces
+\[[C\:|\:B]\to[I\:|\:P_{C\leftarrow B}]\]
+
+\subsection*{Example}
+In $M_{22}$, let $B$ be the basis $\{E_{11}, E_{21}, E_{12}, E_{22}\}$ and let $C$
+be the basis $\{A, B, C, D\}$, where
+\[A=\begin{bmatrix}
+        1 & 0 \\
+        0 & 0
+    \end{bmatrix}\qquad B=\begin{bmatrix}
+        1 & 1 \\
+        0 & 0
+    \end{bmatrix}\qquad C=\begin{bmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{bmatrix}\qquad D=\begin{bmatrix}
+        1 & 1 \\
+        1 & 1
+    \end{bmatrix}\]
+Find the change-of-basis matrix $P_{C\leftarrow B}$ using the Gauss-Jordan method.
+
+\subsection*{Solution}
+\[B=P_{\epsilon\leftarrow B}=\begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix} \quad \text{and} \quad C=\begin{bmatrix}
+        1 & 1 & 1 & 1 \\
+        0 & 1 & 1 & 1 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 1
+    \end{bmatrix}\]
+\[[C\:|\:B]=\left[\begin{array}{cccc|cccc}
+            1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+            0 & 1 & 1 & 1 & 0 & 0 & 1 & 0 \\
+            0 & 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 1 & 0 & 0 & 0 & 1
+        \end{array}\right]\arrows1{rref}\left[\begin{array}{cccc|cccc}
+            1 & 0 & 0 & 0 & 1 & 0  & -1 & 0  \\
+            0 & 1 & 0 & 0 & 0 & -1 & 1  & 0  \\
+            0 & 0 & 1 & 0 & 0 & 1  & 0  & -1 \\
+            0 & 0 & 0 & 1 & 0 & 0  & 0  & 1
+        \end{array}\right]\]
+\[P_{C\leftarrow B}=\begin{bmatrix}
+        1 & 0  & -1 & 0  \\
+        0 & -1 & 1  & 0  \\
+        0 & 1  & 0  & -1 \\
+        0 & 0  & 0  & 1
+    \end{bmatrix}\]
+
+\section{Linear Transformations}
+
+\subsection*{Definition}
+A \textbf{linear transformation} from a vector space $V$ to a vector space $W$ is a
+mapping $T:\:V\to W$ such that, for all $\*u$ and $\*v$ in $V$ and for all scalars $c$
+\begin{enumerate}
+    \item $T(\*u+\*v)=T(\*u)+T(\*v)$
+    \item $T(c\*u)=cT(\*u)$
+\end{enumerate}
+$T:\:V\to W$ is a linear transformation if and only if
+\[T(c_1\*v_1+c_2\*v_2+\dots+c_k\*v_k)=c_1T(\*v_1)+c_2T(\*v_2)+\dots+c_kT(\*v_k)\]
+for all $\*v_1,\dots,\*v_k$ in $V$ and scalars $c_1,\dots,c_k$.
+
+\subsection*{Example}
+Define $T:\:M_{nn}\to M_{nn}$ by $T(A) = AT$. Show that $T$ is a linear transformation.
+
+\subsection*{Solution}
+\[T(A+B)=(A+B)^T=A^T+B^T=T(A)+T(B)\]
+\[T(cA)=(cA)^T=CA^T=cT(A)\]
+Therefore, $T$ is a linear transformation.
+
+\subsection*{Theorem}
+Let $T:\:V\to W$ be a linear transformation. Then
+\begin{enumerate}[(a)]
+    \item $T(0)=0$
+    \item $T(-v)=-T(v)$
+    \item $T(u-v)=T(u)-T(v)$ for all $u$ and $v$ in $V$
+\end{enumerate}
+
+\subsection*{Definition}
+If $T:\:U\to V$ and $S:\:V\to W$ are linear transformations, then the
+\textbf{composition of S with T} is the mapping $S\circ T$, defined by
+\[(S\circ T)(i)=S(T(u))\]
+where $u$ is in $U$.
+
+\subsection*{Definition}
+A linear transformation $T:\:V\to W$ is \textbf{invertible} if there is a linear
+transformation $T':\:W\to V$ such that
+\[T'\circ T=I_V \quad \text{and} \quad T\circ T'=I_W\]
+In this case $T'$ is called an \textbf{inverse} for $T$.
+
+\subsection*{Example}
+Verify that the mappings $T:\:\mathbb{R}^2\to\mathscr{P}_1$ and $T':\:\mathscr{P}_1\to\mathbb{R}^2$ defined by
+\[T\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=a+(a+b)xx \quad \text{and} \quad T'(c+dx=\begin{bmatrix}
+        c \\
+        d-c
+    \end{bmatrix})\]
+are inverses.
+
+\subsection*{Solution}
+We compute
+\[(T\circ T')\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=T'\left(T\begin{bmatrix}
+            a \\b
+        \end{bmatrix}\right)=T'(a+(a+b)x)=\begin{bmatrix}
+        a \\
+        (a+b)-c
+    \end{bmatrix}=\begin{bmatrix}
+        a \\b
+    \end{bmatrix}\]
+and
+\[(T\circ T')(c+dx)=T(T'(c+dx))=T\begin{bmatrix}
+        c \\
+        d-c
+    \end{bmatrix}=c+(c+(d-c))x=c+dx\]
+Hence, $T'\circ T=I_{\mathbb{R}^2}$ and $T\circ T'=I_{\mathscr{P}_1}$. Therefore,
+$T$ and $T'$ are inverses of each other.
+
+\section{Kernel and Range}
+
+\subsection*{Definition}
+Let $T:V\to W$ be a linear transformation. The \textbf{kernel} of $T$ denoted
+ker$(T)$, is the set of all vectors in $V$ that are mapped by $T$ to 0 in $W$. That is,
+\[\text{ker}(T)=\{v\text{ in }V\::\:T(v)=0\}\]
+The \textbf{range} of $T$, denoted by range$(T)$, is the set of all vectors in $W$
+that are images of vectors in $V$ under $T$. That is,
+\[\text{range}(T)=\{T(v)\::\:v\text{ in }V\}=\{w\text{ in }W\::\:w=T(v)\text{ for some }v\text{ in }V\}\]
+
+\subsection*{Example}
+Find the kernel and range of the differential operator $D:\mathscr{P}_3\to\mathscr{P}_2$
+defined by $D(p(x)) = p'(x)$.
+
+\subsection*{Solution}
+\begin{align*}
+    \text{ker}(D) & =\{a+bx+cx^2+dx^3:D(a+bx+cx^2+dx^3)=0\} \\
+                  & =\{a+bx+cx^2+dx^3:b+2cx+3dx^2=0\}       \\
+                  & =\{a+bx+cx^2+dx^3:b=c=d=0\}             \\
+                  & =\{a:a\text{ in }\mathbb{R}\}
+\end{align*}
+range$(D)$ is all polynomials in $\mathscr{P}_2$
+
+\subsection*{Definition}
+Let $T: V\to W$ be a linear transformation. The \textbf{rank} of $T$ is the
+dimension of range of $T$ and is denoted by rank$(T)$. The \textbf{nullity} of
+$T$ is dimension of the kernel of $T$ and is denoted by nullity$(T)$.
+
+\subsection*{Example}
+Find the rank and the nullity of the linear transformation $D:\mathscr{P}_3\to\mathscr{P}_2$
+defined by $D(p(x)) = p'(x)$.
+
+\subsection*{Solution}
+\[\text{rank}(D)=\text{dim}\mathscr{P}_2=3\]
+\[\text{nullity}(D)=\text{dim}(\text{ker}(D))=1\]
+
+\subsection*{The Rank Theorem}
+Let $T: V\to W$ be a linear transformation from a finite-dimensional vector space
+$V$ into a vector space $W$. Then
+\[\text{rank}(T)+\text{nullity}=\text{dim }V\]
+
+\subsection*{Definition}
+A linear transformation $T: V\to W$ is called \textbf{one-to-one} if $T$ maps
+distinct vectors in $V$ to distinct vectors in $W$. If $\text{range}(T) = W$,
+then $T$ is called \textbf{onto}.
+\begin{enumerate}
+    \item $T: V\to W$ is one-to-one if, for all $u$ and $v$ in $V$ $u\neq v$ implies that $T(u)\neq T(v)$
+    \item $T: V\to W$ is one-to-one if, for all $u$ and $v$ in $V$ $T(v)=T(v)$ implies that $u=v$
+    \item $T: V\to W$ is onto if, for all $u$ and $v$ in $V$, there is at least one $v$ in $V$ such that $w=T(v)$
+\end{enumerate}
+
+\subsection*{Theorem}
+A linear transformation $T: V\to W$ is one-to-one if and only if ker$(T) = \{0\}$.
+
+\subsection*{Example}
+Show that the linear transformation $T:\mathbb{R}^2\to\mathscr{P}_1$ defined by
+\[T\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=a+(a+b)x\]
+is one-to-one and onto.
+
+\subsection*{Solution}
+If $\begin{bmatrix}
+        a \\b
+    \end{bmatrix}$ is in the kernel of $T$, then
+\[0=T\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=a+(a+b)x\]
+It follows that $a=$ and $a+b=0$. Hence, $b=0$, and therefore $\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=\begin{bmatrix}
+        0 \\0
+    \end{bmatrix}$. Consequently, ker$(T)=\left\{\begin{bmatrix}
+        0 \\0
+    \end{bmatrix}\right\}$, and $T$ is one-to-one.
+
+By the Rank Theorem,
+\[\text{rank}(T)=\text{dim }\mathbb{R}^2-\text{nullity}(T)=2-0=2\]
+Therefore, the range of $T$ is a two-dimensional subspace of $\mathbb{R}^2$, and hence
+range$(T)=\mathbb{R}^2$. It follows that $T$ is onto.
+
+\subsection*{Theorem}
+Let $\text{dim } V = \text{dim } W = n$. Then a linear transformation $T: V\to W$ is
+one-to-one if and only if it is onto.
+
+\subsection*{Theorem}
+A linear transformation $T: V\to W$ is one-to-one if and only if it is onto.
+
+\subsection*{Definition}
+A linear transformation $T: V\to W$ is called an isomorphism if it is one-to-one
+and onto. If $V$ and $W$ are two vector spaces such that there is an isomorphism
+from $V$ to $W$, then we say $V$ is isomorphic to $W$ and write $V\cong W$.
+
+\subsection*{Theorem}
+Let $V$ and $W$ be two finite-dimensional vector spaces. Then $V$ is isomorphic to
+$W$ if and only if $\text{dim } V = \text{dim } W$.
+
+\subsection*{Example}
+Let W be the vector space of all symmetric $2\times2$ matrices.
+Show that $W$ is isomorphic to $\mathbb{R}^3$.
+
+\subsection*{Solution}
+$W$ is represented by the form $\begin{bmatrix}
+        a & b \\
+        b & c
+    \end{bmatrix}$, so dim $W=3$. Hence, $\text{dim }W=\text{dim }\mathbb{R}^3$,
+so $W\cong\mathbb{R}^3$.
+
+\section{Matrix of a Linear Transformation}
+
+\subsection*{Theorem}
+Let $V$ and $W$ be two finite-dimensional vector spaces with bases $B$ and $C$
+respectively, where $B = {v_1,\dots, v_n}$. If $T: V\to W$ is a linear
+transformation, then the $m\times n$ matrix $A$ defined by
+\[A=[[T(\*v_1)_C][T(\*v_2)_C]\ddots[T(\*v_n)_C]]\]
+satisifes
+\[A[\*v]_B=[T(\*v)]_C\]
+for every vector $\*v$ in $V$.
+\[[T]_{C\leftarrow B}[\*v]_B = [T(\*v)]_C\]
+\[[T]_B[\*v]_B = [T(\*v)]_B\]
+
+\subsection*{Example}
+Let $T:\mathbb{R}^3\to\mathbb{R}^2$ be the linear transformation defined by
+\[
+    T\begin{bmatrix}
+        x \\y\\z
+    \end{bmatrix}=\begin{bmatrix}
+        x-2y \\
+        x+y-3z
+    \end{bmatrix}
+\]
+and let $B = \{e_1, e_2, e_3\}$ and $C = \{e_2, e_1\}$ be bases for $\mathbb{R}^3$ and
+$\mathbb{R}^2$, respectively. Find the matrix of $T$ with respect to $B$ and $C$
+and verify the previous Theorem for $\*v=\begin{bmatrix}
+        1 \\3\\-2
+    \end{bmatrix}$
+
+\subsection*{Solution}
+First, we compute
+\[T(e_1)=\begin{bmatrix}
+        1 \\1
+    \end{bmatrix} \qquad T(e_2)\begin{bmatrix}
+        -2 \\1
+    \end{bmatrix} \qquad T(e_3)\begin{bmatrix}
+        0 \\-3
+    \end{bmatrix}\]
+Next, we need their coordinate vectors with respect to $C$. Since
+\[\begin{bmatrix}
+        1 \\1
+    \end{bmatrix}=e_2+e_1 \qquad \begin{bmatrix}
+        -2 \\ 1
+    \end{bmatrix}=e_2-2e_1 \qquad \begin{bmatrix}
+        0 \\ -3
+    \end{bmatrix}=-3e_2+0e_1\]
+we have
+\[[T(e_1)]_C=\begin{bmatrix}
+        1 \\1
+    \end{bmatrix} \qquad [T(e_2)]_C=\begin{bmatrix}
+        1 \\-2
+    \end{bmatrix} \qquad [T(e_3)]_C=\begin{bmatrix}
+        -3 \\0
+    \end{bmatrix}\]
+Therefore, the matrix of $T$ with respect to $B$ and $C$ is
+\begin{align*}
+    A & =[T]_{C\leftarrow B}=\begin{bmatrix}
+        [T(e_1)]_C & [T(e_2)]_C & [T(e_3)]_C
+    \end{bmatrix} \\
+      & =\begin{bmatrix}
+        1 & 1  & -3 \\
+        1 & -2 & 0
+    \end{bmatrix}
+\end{align*}
+To verify the Theorem for $\*v$, we first compute
+\[T(\*v)=T\begin{bmatrix}
+        1 \\3\\-2
+    \end{bmatrix}=\begin{bmatrix}
+        -5 \\10
+    \end{bmatrix}\]
+Then
+\[[\*v]_B=\begin{bmatrix}
+        1 \\3\\-2
+    \end{bmatrix}\]
+and
+\[[T(\*v)]_C\begin{bmatrix}
+        -5 \\10
+    \end{bmatrix}_C=\begin{bmatrix}
+        10 \\-5
+    \end{bmatrix}\]
+Using all of these facts, we confirm that
+\[A[\*v]_B=\begin{bmatrix}
+        1 & 1  & -3 \\
+        1 & -2 & 0
+    \end{bmatrix}\begin{bmatrix}
+        1 \\3\\-2
+    \end{bmatrix}=\begin{bmatrix}
+        10 \\-5
+    \end{bmatrix}=[T(\*v)]_C\]
+
+\subsection*{Matrices of Composite and Inverse Linear Transformations}
+
+\subsection*{Theorem}
+Let $U$, $V$, and $W$ be finite-dimensional vector spaces with bases $B$, $C$, and $D$,
+respectively. A linear transformation $T: U\to V$ and $S: V\to W$ be linear transformation. Then
+\[[S\circ T]_{D\leftarrow B}=[S]_{D\leftarrow C}[T]_{C\leftarrow B}\]
+
+\subsection*{Theorem}
+Let $T: V\to W$ be a linear transformation between $n$-dimensional vector spaces
+$V$ and $W$ and let $B$ and $C$ be bases for $V$ and $W$, respectively.
+Then $T$ is invertible if and only if the matrix $[T]_{C\leftarrow B}$ if invertible. In this case,
+\[\left([T]_{C\leftarrow B}\right)^{-1}=[T^{-1}]_{B\leftarrow C}\]
+
+\subsection*{Example}
+The linear transformation $T:\mathbb{R}^2\to\mathscr{P}_1$ defined by
+\[T\begin{bmatrix}
+        a \\b
+    \end{bmatrix}=a+(a+b)x\]
+was shown to be one-to-one and onto and hence invertible. Find $T^{-1}$.
+
+\subsection*{Solution}
+Using $\epsilon$ and $\epsilon'$ for $\mathbb{R}^2$ and $\mathscr{P}_2$
+\[
+    [T]_{\epsilon'\leftarrow\epsilon}=\begin{bmatrix}
+        1 & 0 \\
+        1 & 1
+    \end{bmatrix}
+\]
+It follows that the matrix of $T^{-1}$ with respect to $\epsilon'$ and $\epsilon$ is
+\[[T^{-1}]_{\epsilon\leftarrow\epsilon'}=([T]_{\epsilon'\leftarrow\epsilon})^{-1}\begin{bmatrix}
+        1 & 0 \\
+        1 & 1
+    \end{bmatrix}^{-1}=\begin{bmatrix}
+        1  & 0 \\
+        -1 & 1
+    \end{bmatrix}\]
+
+\begin{align*}
+    [T^{-1}(a+bx)]_{\epsilon} & =[T^{-1}]_{\epsilon\leftarrow\epsilon'}[a+bx]_{\epsilon'} \\
+                              & =\begin{bmatrix}
+        1  & 0 \\
+        -1 & 1
+    \end{bmatrix}\begin{bmatrix}
+        a \\b
+    \end{bmatrix}     \\
+                              & =\begin{bmatrix}
+        a \\
+        b-a
+    \end{bmatrix}
+\end{align*}
+This means that
+\[T^{-1}(a+bx)=ae_1+(b-a)e_2=\begin{bmatrix}
+        a \\b-a
+    \end{bmatrix}\]
+
+\section{Applications}
+
+\subsection*{Homogeneous Linear Differential Equations}
+
+\subsection*{Theorem}
+Let $S$ be the solution space of
+\[y''+ay'+by=0\]
+and let $\lambda_1$ and $\lambda_2$ be the roots of the characteristic equation
+$\lambda^2 + a\lambda + b = 0$.
+\begin{enumerate}[(a)]
+    \item If $\lambda_1\neq\lambda_2$, then $\{e^{\lambda_1t},e^{\lambda_2t}\}$ is a basis for $S$.
+    \item If $\lambda_1=\lambda_2$, then $\{e^{\lambda_1t},e^{\lambda_1t}\}$ is a basis for $S$.
+\end{enumerate}
+Therefore, the solutions are
+\[y=c_1e^{\lambda_1t}+c_2e^{\lambda_2t} \qquad \text{and} \qquad y=c_1e^{\lambda_1t}+c_2te^{\lambda_1t}\]
+
+\subsection*{Example}
+Find all solutions of $y''-5y'+6y=0$.
+
+\subsection*{Solution}
+The characteristic equation is
+\[\lambda^2-5\lambda+6=(\lambda-2)(\lambda-3)=0\]
+Thus, the roots are 2 and 3, so $\{e^{2t},e^{3t}\}$ is a basis for the solution space.
+The solutions to the given equation are of the form
+\[y=c_1e^{2t}+c_2e^{3t}\]
+The constants $c_1$ and $c_2$ can be determined if additional equations, called \textbf{boundary conditions}, are specified.

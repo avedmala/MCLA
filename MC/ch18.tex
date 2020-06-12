@@ -1,0 +1,165 @@
+\chapter{Second-Order Differential Equations}
+
+\section{Second-Order Differential Equations}
+A second-order differential equation has the form
+$$P(x)\frac{d^y}{dx^2}+Q(x)\frac{dy}{dx}+R(x)y=G(x)$$
+If given in the form
+$$ay''+by'+cy=0$$
+Replacing $y''$ with $r^2$, $y'$ with $r$, and $y$ with 1 lets us solve the
+equation using the auxiliary equation
+$$ar^2+br+c=0$$
+\begin{description}
+    \item [Case 1:] $b^2-4ac>0 \qquad y=c_1e^{r_1x}+c_2e^{r_2x}$
+    \item [Case 2:] $b^2-4ac=0 \qquad y=c_1e^{r_1x}+c_2xe^{r_2x}$
+    \item [Case 3:] $b^2-4ac<0 \qquad y=e^{\alpha x}(c_1cos\:\beta x+c_2sin\: \beta x)$
+          \subitem $\alpha = \frac{-b}{(2a)}$ and $\beta = \frac{\sqrt{4ac-b^2}}{(2a)}$
+\end{description}
+
+\subsection*{Example}
+Solve the equation $y''+y'-6y=0$ with the initial values $y(0)-1$, $y'(0)=0$
+
+\subsection*{Solution}
+The auxiliary equation is
+$$r^2+r+6=(r-2)(r+3)=0$$
+So the solution is
+$$y=c_1e^{2x}+c_2e^{-3x}$$
+Differentiating this, we get
+$$y'=2c_1e^{2x}-3c_2e^{-3x}$$
+Satisfying initial conditions
+$$y(0)=c_1+c_2=1$$
+$$y'(0)=2c_1-3c_2=0$$
+$$c_1=\frac{3}{5} \qquad c_2=\frac{2}{5}$$
+Giving us the solution
+$$y=\frac{3}{5}e^{2x}+\frac{2}{5}e^{-3x}$$
+
+\section{Nonhomogenous Linear Equations}
+
+\subsection*{Method of Undetermined Coefficients}
+If the differential equation is given in the form $ay''+by'+cy=G(x)$, then the solution
+is given by
+$$y(x)=y_p(x)+y_c(x)$$
+Where $y_c(x)$ is the general solution and $y_p(x)$ is the particular solution.
+
+\subsection*{Proof}
+\begin{itemize}
+    \item[] $a(y - y_p)'' + b(y - y_p)' + c(y - y_p) = ay'' - ay_p'' + by' - by_p' + cy - cy_p$
+    \item[] $a(y - y_p)'' + b(y - y_p)' + c(y - y_p) = (ay'' + by' + cy) - (ay_p'' + by_p' + cy_p)$
+    \item[] $a(y - y_p)'' + b(y - y_p)' + c(y - y_p) = g(x) - g(x) = 0$
+\end{itemize}
+
+\subsection*{Example}
+Solve the equation $y''+y'-2y=x^2$
+
+\subsection*{Solution}
+The auxiliary equation becomes
+$$r^2+r-2=(r-1)(r+2)=0$$
+which gives a complementary solution of
+$$y_c=c_1e^x+c_2e^{-2x}$$
+Since $G(x)$ is a polynomial of the 2nd degree, this gives a particular solution
+\begin{itemize}
+    \item[] $y_p(x)=Ax^2+Bx+C$
+    \item[] $y_p'(x)=2Ax+B$
+    \item[] $y_p''(x)=2A$
+\end{itemize}
+Substituting into the original differential equation gives
+$$(2A) + (2Ax + B) - 2(Ax^2 + Bx + C) = x^2$$
+$$A=-\frac{1}{2} \qquad B=-\frac{1}{2} \qquad C=-\frac{3}{4}$$
+which gives the particular solution
+$$y_p(x)=-\frac{1}{2}x^2-\frac{1}{2}x-\frac{3}{4}$$
+so the final solution is
+$$y = c_1e^x + c_2e^{-2x} +  -\frac{1}{2} x^2 - \frac{1}{2} x - \frac{3}{4}$$
+
+\subsection*{Method of Variation of Parameters}
+If we have already solved the homogeneous equation $ay''+by'+cy=0$ in the form
+$$y(x)=c_1y_1(x)+c_2y_2(x)$$
+We can replace the constants and write this with an arbitrary function $u(x)$
+$$y_p(x)=u_1(x)y_1(x)+u_2(x)y_2(x)$$
+$$y_p'(x)=(u_1'y_1+u_2'y_2)+(u_1y_1'+u_2y_2')$$
+
+\subsection*{Example}
+Solve the equation $y''+y=tan\:x$, $0<x<\pi/2$
+
+\subsection*{Solution}
+Solving for the complementary equation gives us
+$$r^1+1=0$$
+$$y_c(x)=c_1sin\:x+c_2cos\:x$$
+Using variation of parameters means we need a solution of the form
+\begin{itemize}
+    \item[] $y_p(x)=u_1(x)sin\:x+u_2(x)cos\:x$
+    \item[] $y_p'(x)=(u_1'sin\:x+u_2'cos\:x)+(u_1sin\:x+u_2cos\:x)$
+    \item[] $y_p''(x)=u_1'cos\:x-u_2'sin\:x-u_1sin\:x-u_2cos\:x$
+\end{itemize}
+To get a solution we need
+$$y_p''+y_p=u_1'cos\:x-u_2'sin\:x=tan\:x$$
+$$u_1'(sin^2x+cos^2x)=cos\:x\:tan\:x$$
+$$u_1'=sin\:x \qquad u_1(x)=-cos\:x$$
+Solving for $u_2$ gives
+$$u_2'(x)=-\frac{sin\:x}{cos\:x} \qquad u_1'(x)=cos\:x-sec\:x$$
+$$u_2(x)=sin\:x-lin(sec\:x+tan\:x)$$
+Therefore
+$$y_p(x)=-cos\:x\:ln(sec\:x+tan\:x)$$
+$$y(x)=c_1sin\:x+c_2cos\:x-cos\:x\:ln(sec\:x+tan\:x)$$
+
+\section{Applications of Second-Order Differential Equations}
+
+Vibrating strings follow a second-order differential equation by satisfying
+Newton's second law
+$$m\frac{d^2x}{dy^2}=-kx$$
+The general solution can be written as
+$$x(t)=c_1cos\:wt+c_2sin\:wt$$
+or
+$$x(t)=Acos(wt+\delta)$$
+Where
+$$w=\sqrt{k/m}$$
+$$A=\sqrt{c_1^2+c_2^2}$$
+$$cos\:\delta =\frac{c_1}{A} \qquad sin\:\delta = -\frac{c_2}{A}$$
+Damped vibrations in a string are subjected to a frictional force but still satisfies
+a second-order differential equation
+$$m\frac{d^2x}{dy^2}+c\frac{dy}{dx}+kx=0$$
+In electrical circuits, voltage drop across resistors, inductors and conductors
+must be equal to the supplied voltage, but since $I = \frac{dQ}{dt}$, this turns into a
+second-order differential equation
+$$L\frac{d^2Q}{dt^2}+R\frac{dQ}{dt}+Q/C=E(t)$$
+
+\subsection*{Example}
+A spring with a mass of 2kg has a natural length of 0.5m. A force of 25.6 N
+is required to maintain it stretched to a length of 0.7m. If the spring is
+stretched to a length of 0.7m and then released with initial velocity 0, find
+the position of the mass at any time $t$.
+
+\subsection*{Solution}
+From Hooke's law
+$$k(0.2)=25.6$$
+Since $k=128$ and $m=2$
+$$2\frac{d^x}{dy^2}+128x=0$$
+which gives
+$$x(t)=c_1cos\:8t+c_2sin\:8t$$
+
+\section{Series Solution}
+If differential equations aren't in the two forms given in 18.1 and 18.2, they won't
+be able to be solved using finite combinations of simple functions. Using a power
+series though lets us express the differential equations in another form
+$$y=f(x)=\sum_{n=0}^\infty c_nx^n=c_0+c_1x+c_2x^2+\dots$$
+
+\subsection*{Example}
+Use power series to solve the equation $y''+y=0$
+
+\subsection*{Solution}
+Differentiating the power series in the form above gives
+$$y'=\sum_{n=1}^\infty nc_nx^{n-1}=c_1+2c_2x+\dots$$
+$$y''=\sum_{n=2}^\infty n(n-1)c_nx^{n-2}=2c_2x+6c_3x+\dots$$
+Substituting expressions gives
+$$\sum_{n=0}^\infty \left((n+2)(n+1)c_{n+1}+c_n\right)x^n=0$$
+If two power series are equal, then the corresponding coefficients must be equal
+$$(n+2)(n_1)c_{n+1}+c_n=0$$
+$$c_{n+2}=\frac{-c_0}{\left((n+1)(n+2)\right)}$$
+This gives a recursive relation. By plugging in values for $n$, we discover a pattern
+\begin{description}
+    \item [For even coefficients:] $c_{2n}=\frac{(-1)^nc_0}{(2n)!}$
+    \item [For odd coefficients:] $c_{2n+1}=\frac{(-1)^nc_1}{(2n+1)!}$
+\end{description}
+Plugging these back into the original form gives
+$$y=c_0\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\dots + \frac{(-1)^nc_0}{(2n)!}\right)$$
+$$+c_1\left(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\dots + \frac{(-1)^nc_1}{(2n+1)!}\right)$$
+$$y=c_0\sum_{n=0}^\infty (-1)^n \cdot \frac{x^{2n}}{(2n)!}+
+    c_1\sum_{n=0}^\infty (-1)^n \cdot \frac{x^{2n+1}}{(2n_1)!}$$

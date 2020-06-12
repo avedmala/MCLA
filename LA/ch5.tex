@@ -1,0 +1,419 @@
+\chapter{Orthogonality}
+
+\section{Orthogonality in $\mathbb{R}^n$}
+
+\subsection*{Orthogonal and Orthonormal Sets of Vectors}
+
+\subsection*{Definition}
+A set of vectors $\{\*v_1,\*v_2,\dots,\*v_k\}$ in $\mathbb{R}^n$ is called an
+\textbf{orthogonal set} if all pairs of distinct vectors in the set are orthogonal.
+\[
+    \*v_i\cdot\*v_j=0 \qquad \text{whenever} \quad i\neq j \quad \text{for } i,j=1,2,\dots,k
+\]
+
+\subsection*{Theorem}
+If $\{\*v_1,\*v_2,\dots,\*v_k\}$ is an orthogonal set of nonzero vectors in $\mathbb{R}^n$,
+then these vectors are linearly independent.
+
+\subsection*{Proof}
+If $c_1,\dots,c_k$ are scalars such that $c_1\*v_1+\dots+c_k\*v_k=0$, then
+\[(c_1\*v_1+\dots+c_k\*v_k)\cdot\*v_i=0\cdot\*v_i=0\]
+Since $\{\*v_1,\*v_2,\dots,\*v_k\}$ is an orthogonal set, all of the dot products
+form the equation above are zero except for $\*v_i\cdot\*v_i$
+Therefore, $(c_1\*v_1+\dots+c_k\*v_k)\cdot\*v_i=0\cdot\*v_i=0$ reduces to $c_i(\*v_i\cdot\*v_i)=0$.
+Now, $\*v_i\neq0$ by the hypothesis and $\*v_i\cdot\*v_i\neq0$ by the definition of
+orthogonality, so $c_i=0$. Since this is true for all $i=1,\dots,k$, $*v_1,\*v_2,\dots,\*v_k$
+must be a linearly independent set.
+
+\subsection*{Definition}
+A set of vectors in $\mathbb{R}^n$ is an \textbf{orthonormal set} if it is
+an orthogonal set of unit vectors. An \textbf{orthonormal basis} for a subspace $W$
+of $\mathbb{R}^n$ is a basis of $W$ that is an orthonormal set.
+
+\subsection*{Orthogonal Matrices}
+
+\subsection*{Theorem}
+The columns of an $m\times n$ matrix $Q$ form an orthonormal set if and only if
+\[Q^TQ=I_n\]
+
+\subsection*{Proof}
+$(Q^TQ)_{ij}=q_i\cdot q_j$ by the definition of matrix multiplication.
+
+The columns $Q$ form an orthogonal set if and only if
+\[q_i\cdot q_j=\begin{cases}
+        0 & \text{if } i\neq j \\
+        1 & \text{if } i=j
+    \end{cases}\]
+which holds if and only if
+\[(Q^TQ)_{ij}=\begin{cases}
+        0 & \text{if } i\neq j \\
+        1 & \text{if } i=j
+    \end{cases}\]
+
+\subsection*{Definition}
+An $n\times n$ matrix $Q$ whose columns form an orthonormal set is called an
+\textbf{orthogonal matrix}.
+
+\subsection*{Theorem}
+A square matrix $Q$ is orthogonal if and only if $Q^{-1}=Q^T$.
+
+\subsection*{Example}
+Show that the following matrices are orthogonal:
+\[
+    A=\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix} \qquad
+    B=\begin{bmatrix}
+        2/3  & 1/3 & 2/3  \\
+        -2/3 & 2/3 & 1/3  \\
+        1/3  & 2/3 & -2/3
+    \end{bmatrix}
+\]
+
+\subsection*{Solution}
+\[
+    A^{-1}=A^T=\begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix} \qquad
+    B^{-1}=B^T=\begin{bmatrix}
+        2/3 & -2/3 & 1/3  \\
+        1/3 & 2/3  & 2/3  \\
+        2/3 & 1/3  & -2/3
+    \end{bmatrix}
+\]
+
+\section{Orthogonal Complements and Orthogonal Projections}
+
+\subsection*{Definition}
+Let $W$ be a subspace of $\mathbb{R}^n$ and let ${u_1, \dots ,u_k}$ be an
+orthogonal basis for $W$. For any vector $\*v$ in $\mathbb{R}^n$,
+the \textbf{orthogonal projection of v onto W} is given by
+\[\text{proj}_W(\*v)=\left(\frac{u_1\cdot\*v}{u_1\cdot u_1}\right)u_1+\dots+
+    \left(\frac{u_k\cdot\*v}{u_k\cdot u_k}\right)u_k\]
+The \textbf{component of v orthogonal to W} is the vector
+\[\text{perp}_W(\*v)=\*v-\text{proj}_W(\*v)\]
+
+\subsection*{Example}
+Let $v=\begin{bmatrix}
+        2 \\4\\1
+    \end{bmatrix}$ and an orthogonal basis for $W$ be $\left\{\begin{bmatrix}
+        0 \\1\\1
+    \end{bmatrix},\begin{bmatrix}
+        1 \\-1\\1
+    \end{bmatrix}\right\}$
+Find the orthogonal projection of $v$ onto $W$ and the component of $v$ orthogonal to $W$.
+
+\subsection*{Solution}
+\begin{align*}
+    \text{proj}_W(v) & =\left(\frac{u_1\cdot v}{u_1\cdot u_1}\right)u_1+\left(\frac{u_2\cdot v}{u_2\cdot u_2}\right)u_2        \\
+                     & u_1\cdot v=5 \quad u_2\cdot v=-1 \quad u_1\cdot u_1=2 \quad u_2\cdot u_2=3                              \\
+    \text{proj}_W{v} & =\frac{5}{2}\begin{bmatrix}
+        0 \\1\\1
+    \end{bmatrix}-\frac{1}{3}\begin{bmatrix}
+        1 \\-1\\1
+    \end{bmatrix}=\begin{bmatrix}
+        -1/8 \\17/6\\18/6
+    \end{bmatrix} \\
+    \text{perp}_W(v) & =v-\text{proj}_W(v)=\begin{bmatrix}
+        2 \\4\\1
+    \end{bmatrix}-\begin{bmatrix}
+        -1/3 \\17/6\\13/6
+    \end{bmatrix}=\begin{bmatrix}
+        7/3 \\7/3\\-7/6
+    \end{bmatrix}
+\end{align*}
+
+\section{The Gram-Schmidt Process and QR Factorization}
+
+\subsection*{Theorem}
+Let $\{x_1,\dots,x_k\}$ be a basis for a subspace of $W$ of $\mathbb{R}^n$, then
+${v_1,\dots, v_k}$ is an orthogonal basis for $W$ given by:
+\begin{equation*}
+    \begin{aligned}[c]
+        v_1 & =x_2                                                                                                                                                                             \\
+        v_2 & =x_2-\left(\frac{v_1\cdot x_2}{v_1\cdot v_1}\right)v_1                                                                                                                           \\
+        v_3 & =x_3-\left(\frac{v_1\cdot x_3}{v_1\cdot v_1}\right)v_1-\left(\frac{v_2\cdot x_3}{v_2\cdot v_2}\right)v_2                                                                         \\
+        v_k & =x_k-\left(\frac{v_1\cdot x_k}{v_1\cdot v_1}\right)v_1-\left(\frac{v_2\cdot x_k}{v_2\cdot v_2}\right)v_2-\dots-\left(\frac{v_{k-1}\cdot x_k}{v_{k-1}\cdot v_{k-1}}\right)v_{k-1}
+    \end{aligned}
+    \quad
+    \begin{aligned}[c]
+        W_1 & =\text{span}(x_1)           \\
+        W_2 & =\text{span}(x_1,x_2)       \\
+        W_3 & =\text{span}(x_1,x_2,x_3)   \\
+        W_k & =\text{span}(x_1,\dots,x_k)
+    \end{aligned}
+\end{equation*}
+
+\subsection*{Example}
+Apply the Gram-Schmidt Process to construct an orthonormal basis for the subspace
+$W = \text{span}(x_1, x_2, x_3)$ of $\mathbb{R}^3$, where
+\[
+    x_1=\begin{bmatrix}
+        1 \\-1\\-1
+    \end{bmatrix}\quad x_2=\begin{bmatrix}
+        2 \\1\\0
+    \end{bmatrix}\quad x_3=\begin{bmatrix}
+        2 \\2\\1
+    \end{bmatrix}
+\]
+
+\subsection*{Solution}
+\begin{align*}
+    v_1 & =x_1=\begin{bmatrix}
+        1 \\-1\\-1
+    \end{bmatrix}                                                                                                     \\
+    v_2 & =x_2-\left(\frac{v_1\cdot x_2}{v_1\cdot v_1}\right)v_1=\begin{bmatrix}
+        5/3 \\4/3\\1/3
+    \end{bmatrix}                                                   \\
+    v_3 & =x_3-\left(\frac{v_1\cdot x_3}{v_1\cdot v_1}\right)v_1-\left(\frac{v_2\cdot x_3}{v_2\cdot v_2}\right)v_2=\begin{bmatrix}
+        1/14 \\-1/7\\3/14
+    \end{bmatrix}
+\end{align*}
+\[
+    \left\{\begin{bmatrix}
+        1 \\-1\\-1
+    \end{bmatrix},\begin{bmatrix}
+        5/3 \\4/3\\1/3
+    \end{bmatrix},\begin{bmatrix}
+        1/14 \\-1/7\\3/14
+    \end{bmatrix}\right\} \text{is an orthogonal basis for W}
+\]
+
+\subsection*{The QR Factorization}
+
+\subsection*{Theorem}
+Let $A$ be an $m\times n$ matrix with linearly independent columns.
+Then $A$ can be factored as $A = QR$, where $Q$ is a $m\times n$ matrix with
+orthonormal columns and $R$ is an invertible upper triangular matrix.
+
+\subsection*{Example}
+Find a QR factorization of
+\[A=\begin{bmatrix}
+        1 & 2 & 2 \\-1&1&2\\-1&0&1
+    \end{bmatrix}\]
+
+\subsection*{Solution}
+An orthogonal basis for col($A$) is
+\[
+    v_1\begin{bmatrix}
+        1 \\-1\\-1
+    \end{bmatrix} \quad v_2\begin{bmatrix}
+        5/3 \\4/3\\1/3
+    \end{bmatrix} \quad v_3\begin{bmatrix}
+        1/14 \\-1/7\\3/14
+    \end{bmatrix}
+\]
+
+\begin{align*}
+    q_1 & =\frac{v_1}{\Vert{v_1}}=\frac{1}{\sqrt{3}}\begin{bmatrix}
+        1 \\-1\\-1
+    \end{bmatrix}=\begin{bmatrix}
+        \frac{1}{\sqrt{3}} \\-\frac{1}{\sqrt{3}}\\-\frac{1}{\sqrt{3}}
+    \end{bmatrix}  \\
+    q_2 & =\frac{v_2}{\Vert{v_2}}=\sqrt{\frac{3}{14}}\begin{bmatrix}
+        5/3 \\4/3\\1/3
+    \end{bmatrix}=\begin{bmatrix}
+        \frac{5}{3} \sqrt{\frac{3}{14}} \\\frac{4}{3} \sqrt{\frac{3}{14}}\\\frac{1}{3} \sqrt{\frac{3}{14}}
+    \end{bmatrix} \\
+    q_3 & =\frac{v_3}{\Vert{v_3}}=\frac{1}{\sqrt{14}}\begin{bmatrix}
+        1/14 \\-1/7\\3/14
+    \end{bmatrix}=\begin{bmatrix}
+        \frac{1}{14\sqrt{14}} & -\frac{1}{7\sqrt{14}} & \frac{3}{14\sqrt{14}}
+    \end{bmatrix} \\
+    Q   & =\begin{bmatrix}
+        q_1 & q_2 & q_3
+    \end{bmatrix}
+    =\begin{bmatrix}
+        \frac{1}{\sqrt{3}}   & \frac{5}{3}\sqrt{\frac{3}{14}}  & \frac{1}{14\sqrt{14}} \\
+        \-\frac{1}{\sqrt{3}} & \frac{4}{3} \sqrt{\frac{3}{14}} & -\frac{1}{7\sqrt{14}} \\
+        -\frac{1}{\sqrt{3}}  & \frac{1}{3} \sqrt{\frac{3}{14}} & \frac{3}{14\sqrt{14}}
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+    R=Q^TA & =\begin{bmatrix}
+        \frac{1}{\sqrt{3}}              & -\frac{1}{\sqrt{3}}             & -\frac{1}{\sqrt{3}}             \\
+        \frac{5}{3} \sqrt{\frac{3}{14}} & \frac{4}{3} \sqrt{\frac{3}{14}} & \frac{1}{3} \sqrt{\frac{3}{14}} \\
+        \frac{1}{14\sqrt{14}}           & -\frac{1}{7\sqrt{14}}           & \frac{3}{14\sqrt{14}}
+    \end{bmatrix}\begin{bmatrix}
+        1  & 5/3 & 1/14 \\
+        -1 & 4/3 & -1/7 \\
+        -1 & 1/5 & 8/14
+    \end{bmatrix}
+    =\begin{bmatrix}
+        \frac{3}{\sqrt{3}} & 0                               & 0                     \\
+        0                  & \frac{14}{3}\sqrt{\frac{3}{14}} & 0                     \\
+        0                  & 0                               & \frac{1}{14\sqrt{14}}
+    \end{bmatrix}                                                                 \\
+    A      & =\begin{bmatrix}
+        1  & 5/3 & 1/14 \\
+        -1 & 4/3 & -1/7 \\
+        -1 & 1/5 & 8/14
+    \end{bmatrix} =\begin{bmatrix}
+        \frac{1}{\sqrt{3}}   & \frac{5}{3}\sqrt{\frac{3}{14}}  & \frac{1}{14\sqrt{14}} \\
+        \-\frac{1}{\sqrt{3}} & \frac{4}{3} \sqrt{\frac{3}{14}} & -\frac{1}{7\sqrt{14}} \\
+        -\frac{1}{\sqrt{3}}  & \frac{1}{3} \sqrt{\frac{3}{14}} & \frac{3}{14\sqrt{14}}
+    \end{bmatrix} \begin{bmatrix}
+        \frac{3}{\sqrt{3}} & 0                               & 0                     \\
+        0                  & \frac{14}{3}\sqrt{\frac{3}{14}} & 0                     \\
+        0                  & 0                               & \frac{1}{14\sqrt{14}}
+    \end{bmatrix}
+\end{align*}
+
+\section{Orthogonal Diagonalization of Symmetric Matrices}
+A square matrix $A$ is \textbf{orthogonally diagonalizable} if there is an
+orthogonal matrix $Q$ and a diagonal matrix $D$ such that $Q^TAQ=D$.
+
+\subsection*{Example}
+Prove $A$ is symmetric given that $A$ is orthogonally diagonalizable.
+
+\subsection*{Solution}
+Since $A$ is orthogonally diagonalizable, then $Q^TAQ=D$.
+\[Q^TQ=QQ^T=I \qquad \text{since} \qquad Q^{-1}=Q^T\]
+\[QDQ^T=QQ^TAQQ^T=IAI=A\]
+\[A^T=(QDQ^T)^T=(Q^T)^TD^TQ^T=QDQ^T=A\]
+Therefore, $A$ is symmetric.
+
+\section{Applications}
+
+\subsection*{Spectral Decomposition}
+
+\subsection*{Theorem}
+Let $A$ be an $n\times n$ real matrix. Then $A$ is symmetric if and only if it
+is orthogonally diagonalizable.
+
+\subsection*{Derivation of the Spectral Decomposition}
+\begin{align*}
+    A & =QDQ^T=\begin{bmatrix}
+        q_1 & \dots & q_n
+    \end{bmatrix}\begin{bmatrix}
+        \lambda_1 & \dots  & 0         \\
+        \vdots    & \ddots & \vdots    \\
+        0         & \dots  & \lambda_n
+    \end{bmatrix}\begin{bmatrix}
+        q_1^T \\ \vdots \\ q_n^T
+    \end{bmatrix} = \begin{bmatrix}
+        \lambda_1 q_1 & \dots & \lambda_n q_n
+    \end{bmatrix} \begin{bmatrix}
+        q_1^T \\ \vdots \\ q_n^T
+    \end{bmatrix} \\
+    A & =\lambda_1 q_1 q_1^T+\lambda_2 q_2 q_2^T+\dots+\lambda_n q_n q_n^T
+\end{align*}
+This is the \textbf{spectral decomposition} of $A$.
+
+\subsection*{Example}
+Given $A=\begin{bmatrix}
+        4 & 1 \\
+        1 & 4
+    \end{bmatrix}$
+\begin{enumerate}[(a)]
+    \item Orthogonally diagonalize the matrix $A$.
+    \item Find the spectral decomposition of the matrix $A$.
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{enumerate}[(a)]
+    \item \[\text{det}(A-\lambda I)=\text{det}\begin{vmatrix}
+                  4-\lambda & 1         \\
+                  1         & 4-\lambda
+              \end{vmatrix}=(\lambda-5)(\lambda-3)=0\]
+          \[\lambda=3,5 \to D=\begin{bmatrix}
+                  5 & 0 \\
+                  0 & 3
+              \end{bmatrix}\]
+          \[(A-5I)v_1=0 \qquad v_1\begin{bmatrix}
+                  1 \\1
+              \end{bmatrix} \qquad q_1=\frac{1}{\sqrt{2}}\begin{bmatrix}
+                  1 \\1
+              \end{bmatrix}\]
+          \[(A-3I)v_1=0 \qquad v_2\begin{bmatrix}
+                  1 \\-1
+              \end{bmatrix} \qquad q_2=\frac{1}{\sqrt{2}}\begin{bmatrix}
+                  1 \\-1
+              \end{bmatrix}\]
+          \[Q=\begin{bmatrix}
+                  q_1 & q_2
+              \end{bmatrix}=\frac{1}{2}\begin{bmatrix}
+                  1 & 1  \\
+                  1 & -1
+              \end{bmatrix} \qquad D=Q^TAQ=\begin{bmatrix}
+                  5 & 0 \\
+                  0 & 3
+              \end{bmatrix}\]
+    \item \[A=\lambda_1 q_1 q_1^T+\lambda_2 q_2 q_2^T=5\begin{bmatrix}
+                  1/2 & 1/2 \\
+                  1/2 & 1/2
+              \end{bmatrix} + 3\begin{bmatrix}
+                  1/2  & -1/2 \\
+                  -1/2 & 1/2
+              \end{bmatrix}\]
+\end{enumerate}
+
+\subsection*{Quadratic Forms}
+
+\subsection*{Definition}
+A quadratic form in $n$ variables is a function of the form
+\[f(x)=x^TAx\]
+where $A$ is a symmetric $n\times n$ matrix and $x$ is in $\mathbb{R}^n$.
+We can represent quadratic forms using matrices as follows:
+\[ax^2+by^2+cxy=\begin{bmatrix}
+        x & y
+    \end{bmatrix}\begin{bmatrix}
+        a   & c/2 \\
+        c/2 & b
+    \end{bmatrix}\begin{bmatrix}
+        x \\ y
+    \end{bmatrix}\]
+and
+\[ax^2+by^2+cz^2+dx+exz+fyz=\begin{bmatrix}
+        x & y & z
+    \end{bmatrix}\begin{bmatrix}
+        a   & d/2 & e/2 \\
+        d/2 & b   & f/2 \\
+        e/2 & f/2 & c
+    \end{bmatrix}\begin{bmatrix}
+        x \\ y \\ z
+    \end{bmatrix}\]
+
+\subsection*{Example}
+What is the quadratic form with associated matrix
+$A=\begin{bmatrix}
+        2  & -3 \\
+        -3 & 5
+    \end{bmatrix}$?
+
+\subsection*{Solution}
+Let $x=\begin{bmatrix}
+        x_1 \\ x_2
+    \end{bmatrix}$ $A=\begin{bmatrix}
+        2  & -3 \\
+        -3 & 5
+    \end{bmatrix}$
+\[a=2 \quad b=6 \quad c=-6\]
+\[
+    f(x)=x^TAx=\begin{bmatrix}
+        x_1 & x_2
+    \end{bmatrix}\begin{bmatrix}
+        2  & -3 \\
+        -3 & 5
+    \end{bmatrix}\begin{bmatrix}
+        x_1 \\x_2
+    \end{bmatrix}=2x_1^2+5x_2^2-6x_1x_2
+\]
+
+\subsection*{Example}
+Find the the matrix associated with the quadratic form
+\[f(x_1,x_2,x_3)=2x_1^2-x_2^2+5x_3^2+6x_1x_2-3x_1x_3\]
+
+\subsection*{Solution}
+\[A\begin{bmatrix}
+        a   & d/2 & e/2 \\
+        d/2 & b   & f/2 \\
+        e/2 & f/2 & c
+    \end{bmatrix}=\begin{bmatrix}
+        2    & 3  & -3/2 \\
+        3    & -1 & 0    \\
+        -3/2 & 0  & 5
+    \end{bmatrix}\]

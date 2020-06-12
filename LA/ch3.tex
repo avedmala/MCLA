@@ -1,0 +1,962 @@
+\chapter{Matrices}
+
+\section{Matrix Operations}
+
+\subsection*{Matrix Addition and Scalar Multiplication}
+The \textbf{sum} of matrix A and B is obtained by adding the corresponding entries.
+\[A+B=[a_{ij}+b_{ij}]\]
+
+\subsection*{Example}
+Let
+\[
+    A=\begin{bmatrix}
+        1  & 4 & 0 \\
+        -2 & 6 & 5
+    \end{bmatrix} \qquad B=\begin{bmatrix}
+        -3 & 1 & -1 \\
+        3  & 0 & 2
+    \end{bmatrix} \qquad C=\begin{bmatrix}
+        4 & 3 \\
+        2 & 1
+    \end{bmatrix}
+\]
+Then
+\[A+B=\begin{bmatrix}
+        -2 & 5 & -1 \\
+        1  & 6 & 7
+    \end{bmatrix}\]
+but neither $A+C$ not $B+C$ is defined.
+
+The \textbf{scalar multiple} $cA$ is the matrix obtained by multiplying each
+entry of $A$ by $c$.
+\[cA=c[a_{ij}]=[ca_{ij}]\]
+
+\subsection*{Example}
+\[
+    2A=\begin{bmatrix}
+        2  & 8  & 0  \\
+        -4 & 12 & 10
+    \end{bmatrix} \qquad
+    \frac{1}{2}A=\begin{bmatrix}
+        1/2 & 2 & 0   \\
+        -1  & 3 & 5/2
+    \end{bmatrix} \qquad
+    (-1)A=\begin{bmatrix}
+        -1 & -4 & 0  \\
+        2  & -6 & -5
+    \end{bmatrix}
+\]
+
+\subsection*{Matrix Multiplication}
+If $A$ is an $m\times n$ matrix and $B$ is an $n\times r$ matrix, then the \textbf{product}
+$C=AB$ is an $m\times r$ matrix. The $(i,j)$ entry of the product is computed as follows:
+\[c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+\dots+a_{in}b_{nj}\]
+or
+\[c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}\]
+
+\subsection*{Example}
+Compute $AB$ if
+\[
+    A=\begin{bmatrix}
+        1  & 3  & -1 \\
+        -2 & -1 & 1
+    \end{bmatrix} \quad \text{and} \quad
+    B=\begin{bmatrix}
+        -4 & 0  & 3  & -1 \\
+        5  & -2 & -1 & 1  \\
+        -1 & 2  & 0  & 6
+    \end{bmatrix}
+\]
+
+\subsection*{Solution}
+Since $A$ is $2\times$ and $B$ is $3\times$, $AB$ will be a $2\times4$ matrix.
+\begin{align*}
+    c_{11} & =1(-4)+3(5)+(-1)(-1)=12     \\
+    c_{12} & =1(0)+3(-2)+(-1)(2)=-8      \\
+    c_{13} & =1(3)+3(-1)+(-1)(0)=0       \\
+    c_{14} & =1(-1)+3(1)+(-1)(6)=-4      \\
+    c_{21} & =(-2)(-4)+(-1)(5)+(1)(-1)=2 \\
+    c_{22} & =(-2)(0)+(-1)(-2)+(1)(2)=4  \\
+    c_{23} & =(-2)(3)+(-1)(-1)+(1)(0)=-5 \\
+    c_{24} & =(-2)(-1)+(-1)(1)+(1)(6)=7
+\end{align*}
+Thus, product matrix is given by
+\[AB=\begin{bmatrix}
+        12 & -8 & 0  & -4 \\
+        2  & 4  & -5 & 7
+    \end{bmatrix}\]
+
+\subsection*{Matrix Powers}
+\[A^k=AA\dots A\]
+If $A$ is a square matrix and $r$ and $s$ are nonnegative integers, then
+\begin{enumerate}
+    \item $A^rA^s=A^{r+s}$
+    \item $(A^r)^s=A^{rs}$
+\end{enumerate}
+
+\subsection*{Transpose of a Matrix}
+The \textbf{transpose} of an $m\times n$ matrix $A$ is the $n\times m$ matrix $A^T$
+obtained by interchanging the rows and columns of $A$. That is, the $i$the column of
+$A^T$ is the $i$th row of $A$ for all $i$.
+
+\subsection*{Example}
+Let
+\[
+    A=\begin{bmatrix}
+        1 & 3 & 2 \\
+        5 & 0 & 1
+    \end{bmatrix} \qquad
+    B=\begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix} \qquad
+    C=\begin{bmatrix}
+        5 & -1 & 2
+    \end{bmatrix}
+\]
+Then their transposes are
+\[
+    A=\begin{bmatrix}
+        1 & 5 \\
+        3 & 0 \\
+        2 & 1
+    \end{bmatrix} \qquad
+    B=\begin{bmatrix}
+        a & c \\
+        b & d
+    \end{bmatrix} \qquad
+    C=\begin{bmatrix}
+        5 \\ -1 \\ 2
+    \end{bmatrix}
+\]
+
+The dot product of two vectors \textbf{u} and \textbf{b} can be denoted by $\*u^T\*v$.
+A square matrix is \textbf{symmetric} if $A^T=A$ (if $A$ is equal to its own transpose).
+
+\section{Matrix Algebra}
+
+\subsection*{Properties of Addition and Scalar Multiplication}
+Let $A$, $B$, and $C$ be matrices of the same size and let $c$ and $d$ be scalars. Then
+\begin{enumerate}[(a)]
+    \item $A+B=B+A$
+    \item $(A+B)+C=A+(B+C)$
+    \item $A+0=A$
+    \item $A+(-A)=0$
+    \item $c(A+B)=cA+cB$
+    \item $(c+d)A=cA+dA$
+    \item $c(dA)=(cd)A$
+    \item $1A=A$
+\end{enumerate}
+
+A linear combination of matrices looks like
+\[c_1A_1+c_2A_2+\dots+c_kA_k\]
+Where $c_1, c_2, \dots, c_k$ are the \textbf{coefficicents} of the linear combination.
+
+\subsection*{Example}
+Let $A_1=\begin{bmatrix}
+        0  & 1 \\
+        -1 & 0
+    \end{bmatrix}$, $A_2=\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}$, and $A_3=\begin{bmatrix}
+        1 & 1 \\
+        1 & 1
+    \end{bmatrix}$. \\
+Is $B=\begin{bmatrix}
+        1 & 4 \\
+        2 & 1
+    \end{bmatrix}$ a linear combination of $A_1$, $A_2$, and $A_3$?
+
+\subsection*{Solution}
+We want to find scalars $c_1$, $c_2$, and $c_3$ such that $c_1A_1+c_2A_2+c_3A_3=B$. Thus,
+\[
+    c_1\begin{bmatrix}
+        0  & 1 \\
+        -1 & 0
+    \end{bmatrix}+
+    c_2\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}+
+    c_3\begin{bmatrix}
+        1 & 1 \\
+        1 & 1
+    \end{bmatrix}=
+    \begin{bmatrix}
+        1 & 4 \\
+        2 & 1
+    \end{bmatrix}
+\]
+The left-hand side of this equation can be rewritten as
+\[\begin{bmatrix}
+        c_2+c_3  & c_1+c_3 \\
+        -c_1+c_3 & c_2+c_3
+    \end{bmatrix}\]
+Comparing entries and using the definition of the matrix equality, we have four linear equations
+\begin{align*}
+    c_2+c_3  & =1 \\
+    c_1+c_3  & =4 \\
+    -c_1+c_3 & =2 \\
+    c_2+c_3  & =1
+\end{align*}
+Gauss-Jordan elimination easily gives
+\[
+    \left[\begin{array}{ccc|c}
+            0  & 1 & 1 & 1 \\
+            1  & 0 & 1 & 4 \\
+            -1 & 0 & 1 & 2 \\
+            0  & 1 & 1 & 1
+        \end{array}\right]\to
+    \left[\begin{array}{ccc|c}
+            1 & 0 & 0 & 1  \\
+            0 & 1 & 0 & -2 \\
+            0 & 0 & 1 & 3  \\
+            0 & 0 & 0 & 0
+        \end{array}\right]
+\]
+so $c_1=1$, $c_2=-2$, and $c_3=3$. Thus, $A_1-2A_2+3A_3=B$.
+
+The \textbf{span} of a set of matrices is the set of all linear combinations of
+the matrices.
+
+\subsection*{Example}
+Describe the span of the matrices $A_1$, $A_2$, and $A_3$ from the previous example.
+
+\subsection*{Solution}
+Write out a general linear combination of $A_1$, $A_2$, and $A_3$.
+\begin{align*}
+    c_1A_1+c_2A_2+c_3A_3 & =
+    c_1\begin{bmatrix}
+        0  & 1 \\
+        -1 & 0
+    \end{bmatrix}+
+    c_2\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}+
+    c_3\begin{bmatrix}
+        1 & 1 \\
+        1 & 1
+    \end{bmatrix}                      \\
+                         & =\begin{bmatrix}
+        c_2+c_3  & c_1+c_3 \\
+        -c_1+c_3 & c_2+c_3
+    \end{bmatrix}
+\end{align*}
+Suppose we want to know when the matrix $\begin{bmatrix}
+        w & x \\
+        y & z
+    \end{bmatrix}$ is in span $(A_1,A_2,A_3)$. We know that it is when
+\[
+    \begin{bmatrix}
+        c_2+c_3  & c_1+c_3 \\
+        -c_1+c_3 & c_2+c_3
+    \end{bmatrix}=
+    \begin{bmatrix}
+        w & x \\
+        y & z
+    \end{bmatrix}
+\]
+for some choice of scalars $c_1, c_2, c_3$. This gives a system of lienar equations
+whose left-hand side is exactly the same as in the previous example but whose
+right-hand side is general. The augmented matrix of this system is
+\[\left[\begin{array}{ccc|c}
+            0  & 1 & 1 & w \\
+            1  & 0 & 1 & x \\
+            -1 & 0 & 1 & y \\
+            0  & 1 & 1 & z
+        \end{array}\right]\]
+and row reduction produces
+\[
+    \left[\begin{array}{ccc|c}
+            0  & 1 & 1 & w \\
+            1  & 0 & 1 & x \\
+            -1 & 0 & 1 & y \\
+            0  & 1 & 1 & z
+        \end{array}\right]\to
+    \left[\begin{array}{ccc|c}
+            1 & 0 & 0 & \frac{1}{2}x-\frac{1}{2}y    \\
+            0 & 1 & 0 & -\frac{1}{2}x-\frac{1}{2}y+w \\
+            0 & 0 & 1 & \frac{1}{2}x+\frac{1}{2}y    \\
+            0 & 0 & 0 & w-z
+        \end{array}\right]
+\]
+The only restriction comes from the last row, where we must have $w-z=0$ to have a
+solution. Thus, the span of $A_1$, $A_2$, and $A_3$ consists of all matrices
+$\begin{bmatrix}
+        w & x \\
+        y & z
+    \end{bmatrix}$ for which $w=z$. That is, span$(A_1,A_2,A_3)=\left\{\begin{bmatrix}
+        w & x \\
+        y & w
+    \end{bmatrix}\right\}$
+
+Matrices $A_1, A_2, \dots, A_k$ are \textbf{linearly independent} if the only solution of
+\[c_1A_1+c_2A_2+\dots+c_kA_k=0\]
+Is the trivial one: $c_1=c_2=\dots=c_k=0$. If not, the matrices are \textbf{linearly dependent}.
+
+\subsection*{Properties of Matrix Multiplication}
+Let $A$, $B$, and $C$ be matrices and let $k$ be a scalar. Then
+\begin{enumerate}[(a)]
+    \item $A(BC)=(AB)C$
+    \item $A(B+C)=AB+AC$
+    \item $(A+B)C=AC+BC$
+    \item $k(AB)=(kA)B=A(kB)$
+    \item $I_mA=A=AI_n$ if $A$ is $m\times n$
+\end{enumerate}
+
+\subsection*{Properties of Transpose}
+Let $A$ and $B$ be matrices and let $k$ be a scalar. Then
+\begin{enumerate}[(a)]
+    \item $(A^T)^T=A$
+    \item $(A+B)^T=A^T+B^T$
+    \item $(kA)^T=k(A^T)$
+    \item $(AB)^T=B^TA^T$
+    \item $(A^r)^T=(A^T)^r$ for all nonnegative integers $r$
+\end{enumerate}
+
+\subsection*{Theorem}
+\begin{enumerate}[(a)]
+    \item If $A$ is a square matrix, then $A+A^T$ is a symmetric matrix.
+    \item For any matrix $A$, $AA^T$, and $A^TA$ are symmetric matrices.
+\end{enumerate}
+
+\section{Inverse of a Matrix}
+
+\subsection*{Definition}
+If $A$ is an $n\times n$ matrix, an \textbf{inverse} of $A$ is an $n\times n$ matrix
+$A'$ with the property that
+\[AA'=I \qquad \text{and} \qquad A'A=I\]
+where $I=I_n$ is the $n\times n$ identity matrix. If such an $A'$ exists, then $A$
+is called \textbf{invertible.}
+
+\subsection*{Example}
+If $A=\begin{bmatrix}
+        2 & 5 \\
+        1 & 3
+    \end{bmatrix}$, then $A'=\begin{bmatrix}
+        3  & -5 \\
+        -1 & 2
+    \end{bmatrix}$ is an inverse of $A$, since\\ $AA'=\begin{bmatrix}
+        2 & 5 \\
+        1 & 3
+    \end{bmatrix}\begin{bmatrix}
+        3  & -5 \\
+        -1 & 2
+    \end{bmatrix}=\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}$ and $A'A=\begin{bmatrix}
+        3  & -5 \\
+        -1 & 2
+    \end{bmatrix}\begin{bmatrix}
+        2 & 5 \\
+        1 & 3
+    \end{bmatrix}=\begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}$
+
+\subsection*{Theorem}
+If $A$ is an invertible matrix, then its inverse is unique.
+
+\subsection*{Proof}
+A standard way to show that there is just one of something is to show that there
+cannot be more than one. So, suppose $A$ has two inverses, $A'$ and $A''$. Then
+\[AA'=I=A'A \qquad \text{and} \qquad AA''=I=A''A\]
+\[A'=A'I=A'(A'')=(A'A)A''=IA''=A''\]
+Hence, $A'=A''$, and the inverse is unique.
+
+\subsection*{Theorem}
+If $A$ is an invertible $n\times n$ matrix, then the system of linear equations
+given by $A\*x=\*b$ has the unique solution $\*x=A^{-1}\*b$ for any \textbf{b} in $\mathbb{R}^n$.
+
+\subsection*{Theorem}
+If $A=\begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}$, then $A$ is invertible if $ad-bc\neq0$, in which case
+\[A^{-1}=\frac{1}{ad-bc}\begin{bmatrix}
+        d  & -b \\
+        -c & a
+    \end{bmatrix}\]
+If $ad-bc=0$, then $A$ is not invertible.
+
+The expression $ad-bc$ is called the \textbf{determinant} of $A$.
+
+\subsection*{Example}
+Find the inverses of $A=\begin{bmatrix}
+        1 & 2 \\
+        3 & 4
+    \end{bmatrix}$ and $B=\begin{bmatrix}
+        12 & -15 \\
+        4  & -5
+    \end{bmatrix}$, if they exist.
+
+\subsection*{Solution}
+We have det $A=1(4)-2(3)=-2\neq0$, so $A$ is invertible, with
+\[A^{-1}=\frac{1}{-2}\begin{bmatrix}
+        4  & -2 \\
+        -3 & 1
+    \end{bmatrix}=\begin{bmatrix}
+        -2  & 1    \\
+        3/2 & -1/2
+    \end{bmatrix}\]
+On the other hand, det $B=12(-5)-(-15)(4)=0$, so $B$ is not invertible.
+
+\subsection*{Properties of Invertible Matrices}
+\begin{enumerate}[(a)]
+    \item If $A$ is an invertible matrix, then $A^{-1}$ is invertible and \[(A^{-1})^{-1}=A\]
+    \item If $A$ is an invertible matrix and $c$ is a nonzero scalar, then $cA$ is an invertible matrix and \[(cA)^{-1}=\frac{1}{c}A^{-1}\]
+    \item If $A$ and $B$ are invertible matrices of the same size, then $AB$ is invertible and \[(AB)^{-1}=B^{-1}A^{-1}\]
+    \item If $A$ is an invertible matrix, then $A^T$ is invertible and \[(A^T)^{-1}=(A^{-1})^T\]
+    \item If $A$ is an invertible matrix, then $A^n$ is invertible for all nonnegative integers $n$ and \[(A^n)^{-1}=(A^{-1})^n\]
+\end{enumerate}
+
+\subsection*{The Fundamental Theorem of Invertible Matrices}
+Let $A$ be an $n\times n$ matrix. The following statements are equivalent:
+\begin{enumerate}[(a)]
+    \item $A$ is invertible.
+    \item $A\*x=\*b$ has a unique solution for every $\*b$ in $\mathbb{R}^n$.
+    \item $A\*x=0$ has only the trivial solution.
+    \item The reduced row echelon form of $A$ is $I_n$.
+    \item $A$ is a product of elementary matrices.
+\end{enumerate}
+
+\subsection*{Proof}
+We will establish the theorem by proving the circular chain of implications
+\[(a)\Rightarrow(b)\Rightarrow(c)\Rightarrow(d)\Rightarrow(e)\Rightarrow(a)\]
+\begin{enumerate}
+    \item[] $(a)\Rightarrow(b)$ We have already shown that if $A$ is invertible, then $A\*x-\*b$ has the unique solution $\*x=A^{-1}\*b$ for any \textbf{b} in $\mathbb{R}^n$.
+    \item[] $(b)\Rightarrow(c)$ Assume that $A\*x-\*b$ has a unique solution for any $\*b$ in $\mathbb{R}^n$. This implies that $A\*x=0$ has a unique solution. But a homogeneous system $A\*x=0$ always has $\*x=0$ as one solution. So $\*x=0$ must be the solution.
+    \item[] $(c)\Rightarrow(d)$ Suppose that $A\*x=0$ has only the trivial solution. The corresponding system of equations is
+          \begin{align*}
+              a_{11}x_1+a_{12}x_2+ & \dots+a_{1n}x_n=0 \\
+              a_{21}x_1+a_{22}x_2+ & \dots+a_{2n}x_n=0 \\
+                                   & \vdots            \\
+              a_{n1}x_1+a_{n2}x_2+ & \dots+a_{nn}x_n=0
+          \end{align*}
+\end{enumerate}
+and we are assuming that its solution is
+\[x_1=0 \quad x_2=0 \quad \dots \quad x_n=0\]
+In other words, Gauss-Jordan elimination applied to the augmented matrix of the system gives
+\[
+    [A|0]=
+    \left[\begin{array}{cccc|c}
+            a_{11} & a_{12} & \dots  & a_{1n} & 0      \\
+            a_{21} & a_{22} & \dots  & a_{2n} & 0      \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            a_{n1} & a_{n2} & \dots  & a_{nn} & 0
+        \end{array}\right]\to
+    \left[\begin{array}{cccc|c}
+            1      & 0      & \dots  & 0      & 0      \\
+            0      & 1      & \dots  & 0      & 0      \\
+            \vdots & \vdots & \ddots & \vdots & \vdots \\
+            0      & 0      & \dots  & 1      & 0
+        \end{array}\right]=[I_n|0]
+\]
+Thus, the reduced row echelon form of $A$ is $I_n$.
+
+\section{LU Factorization}
+
+\subsection*{Definition}
+Let $A$ be a square matrix. A factorization of $A$ as $A=LU$, where $L$ is unit
+lower triangular and $U$ is upper triangular, is called \textbf{LU factorization} of $A$.
+
+\subsection*{Example}
+Row reduction of $A$ proceeds as follows:
+\[
+    A=\begin{bmatrix}
+        2  & 1  & 3 \\
+        4  & -1 & 3 \\
+        -2 & 5  & 5
+    \end{bmatrix}\arrows2{R_2-2R_1}{R_3+R_1}\begin{bmatrix}
+        2 & 1  & 3  \\
+        0 & -3 & -3 \\
+        0 & 6  & 8
+    \end{bmatrix}\arrows1{R_3+2R_2}\begin{bmatrix}
+        2 & 1  & 3  \\
+        0 & -3 & -3 \\
+        0 & 0  & 2
+    \end{bmatrix}=U
+\]
+The three elementary matrices $E_1, E_2, E_3$ that accomplish this reduction of $A$
+to echelon form $U$ are
+\[
+    E_1=\begin{bmatrix}
+        1  & 0 &   \\
+        -2 & 1 & 0 \\
+        0  & 0 & 1
+    \end{bmatrix} \qquad E_2=\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        1 & 0 & 1
+    \end{bmatrix} \qquad E_3\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 2 & 1
+    \end{bmatrix}
+\]
+Hence,
+\[E_3E_2E_1A=U\]
+Solving for $A$, we get
+\begin{align*}
+    A=E_1^{-1}E_2^{-1}E_3^{-1}U & =\begin{bmatrix}
+        1 & 0 & 0 \\
+        2 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}\begin{bmatrix}
+        1  & 0 & 0 \\
+        0  & 1 & 0 \\
+        -1 & 0 & 1
+    \end{bmatrix}\begin{bmatrix}
+        1 & 0  & 0 \\
+        0 & 1  & 0 \\
+        0 & -2 & 1
+    \end{bmatrix}U \\
+                                & =\begin{bmatrix}
+        1  & 0  & 0 \\
+        2  & 1  & 0 \\
+        -1 & -2 & 1
+    \end{bmatrix}U=LU
+\end{align*}
+Thus, $A$ can be factored as \[A=LU\]
+
+The elementary row operations that were used are, in order:
+\[
+    \begin{aligned}[c]
+         & R_2-2R_1             \\
+         & R_3+R_1=R_3-(-1)R_1  \\
+         & R_3+2R_2=R_3-(-2)R_2
+    \end{aligned}
+    \qquad
+    \begin{aligned}[c]
+         & \text{(multiplier = 2)}  \\
+         & \text{(multiplier = -1)} \\
+         & \text{(multiplier = -2)}
+    \end{aligned}
+\]
+The multipliers are precisely the entries of $L$ that are below its diagonal.
+\[L=\begin{bmatrix}
+        1  & 0  & 0 \\
+        2  & 1  & 0 \\
+        -1 & -2 & 1
+    \end{bmatrix}\]
+and $L_{21}-2$, $L_{31}=-1$, and $L_{32}=-2$. Notice the elementary row operations
+$R_i=kR_j$ has its multiplier $k$ placed in the $(i,j)$ entry of $L$.
+
+\subsection*{$\*P^T\*{LU}$ Factorization}
+This method is an adaptation of the LU factorization which handles row interchanges
+during Gaussian elimination. $P$ is called the \textbf{permutation matrix}.
+
+\subsection*{Theorem}
+If $P$ is a permutation matrix, then $P^{-1}=P^T$.
+
+\subsection*{Definition}
+Let $A$ be a square matrix. A factorization of $A$ as $A=P^TLU$, where $P$ is a
+permutation matrix, $L$ is unit lower triangular, and $U$ is upper triangular,
+is called a $P^TLU$ factorization of $A$.
+
+\subsection*{Example}
+Find a $P^TLU$ factorization of $A=\begin{bmatrix}
+        0 & 0 & 6 \\
+        1 & 2 & 3 \\
+        2 & 1 & 4
+    \end{bmatrix}$.
+
+\subsection*{Solution}
+First we reduce $A$ to row echelon form.
+\[
+    A=\begin{bmatrix}
+        0 & 0 & 6 \\
+        1 & 2 & 3 \\
+        2 & 1 & 4
+    \end{bmatrix}\arrows1{R_1\leftrightarrow R_2}\begin{bmatrix}
+        1 & 2 & 3 \\
+        0 & 0 & 6 \\
+        2 & 1 & 4
+    \end{bmatrix}\arrows1{R_3-2R_1}\begin{bmatrix}
+        1 & 2  & 3  \\
+        0 & 0  & 6  \\
+        0 & -3 & -2
+    \end{bmatrix}
+\]
+\[\arrows1{R_2\leftrightarrow R_3}\begin{bmatrix}
+        1 & 2  & 3  \\
+        0 & -3 & -2 \\
+        0 & 0  & 6
+    \end{bmatrix}\]
+We have used two row interchanges ($R_1\leftrightarrow R_2$ and then $R_2\leftrightarrow R_3$),
+so the required permutation matrix is
+\[
+    P=P_2P_1=\begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 1 \\
+        0 & 1 & 0
+    \end{bmatrix}\begin{bmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}=\begin{bmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{bmatrix}
+\]
+We now find an $LU$ factorization of $PA$.
+\[
+    PA=\begin{bmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        1 & 0 & 0
+    \end{bmatrix}\begin{bmatrix}
+        0 & 0 & 6 \\
+        1 & 2 & 3 \\
+        2 & 1 & 4
+    \end{bmatrix}=\begin{bmatrix}
+        1 & 2 & 3 \\
+        2 & 1 & 4 \\
+        0 & 0 & 6
+    \end{bmatrix}\arrows1{R_2-2R_1}\begin{bmatrix}
+        1 & 2  & 3  \\
+        0 & -3 & -2 \\
+        0 & 0  & 6
+    \end{bmatrix}=U
+\]
+Hence $L_{21}=2$, and so
+\[
+    A=P^TLU=\begin{bmatrix}
+        0 & 0 & 1 \\
+        1 & 0 & 0 \\
+        0 & 1 & 0
+    \end{bmatrix}\begin{bmatrix}
+        1 & 0 & 0 \\
+        2 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bmatrix}\begin{bmatrix}
+        1 & 2  & 3  \\
+        0 & -3 & -2 \\
+        0 & 0  & 6
+    \end{bmatrix}
+\]
+
+\section{Subspaces, Basis, Dimension, and Rank}
+
+\subsection*{Definition}
+A \textbf{subspace} of $\mathbb{R}^n$ is any collection $S$ of vectors in
+$\mathbb{R}^n$ such that
+\begin{enumerate}[1.]
+    \item The zero vector 0 is in $S$.
+    \item If \textbf{u} and \textbf{v} are in $S$, then $\*{u+v}$ is in $S$.
+    \item If \textbf{u} is in $S$ and $c$ is a scalar, then $c\*u$ is in $S$.
+\end{enumerate}
+
+\subsection*{Example}
+Every line and place through the origin in $\mathbb{R}^3$ is a subspace of $\mathbb{R}^3$.
+It should be clear geometrically that properties (1) through (3) are satisfied. Here
+is an algebriac proof in the case of a plane through the origin. You are asked to give
+the corresponding proof for a line.
+
+Let $\mathscr{P}$ be a plane through the origin with direction vectors $\*v_1$ and
+$\*v_2$. Hence, $\mathscr{P}=\text{span}(\*v_1,\*v_2)$. Ther zero vector 0 is in
+$\mathscr{P}$, since $0=0\*v_1+0\*v_2$. Now let
+\[\*u=c_1\*v_1+c_2\*v_2 \qquad \text{and} \qquad \*v=d_1\*v_1+d_2\*v_2\]
+be two vectors in $\mathscr{P}$. Then
+\[\*{u+v}=(c_1\*v_1+c_2\*v_2)+(d_1\*v_1+d_2\*v_2)=(c_1+d_1)\*v_1+(c_2+d_2)\*v_2\]
+Thus, \textbf{u+v} is a linear combination of $\*v_1$ and $\*v_2$ and so is in $\mathscr{P}$.
+
+Now let $c$ be a scalar. Then
+\[c\*u=c(c_1\*v_1+c_2\*v_2)=(cc_1)\*v_1+(cc_2)\*v_2\]
+which shows that $c\*u$ is also a linear combination of $*v_1$ and $*v_2$ and is
+therefore in $\mathscr{P}$. We have shown that $\mathscr{P}$ satisfies properties
+(1) through (3) and hence is a subspace of $\mathbb{R}^3$.
+
+\subsection*{Theorem}
+Let $v_1, v_2, \dots, v_k$ be vectors in $\mathbb{R}^n$. Then span$(v_1, v_2, \dots, v_k)$
+is a subspace of $\mathbb{R}^n$.
+
+\subsection*{Example}
+Show that the set of all vectors $\begin{bmatrix}
+        x \\y\\z
+    \end{bmatrix}$ that satisfy the conditions $x=3y$ and $z=-2y$ forms a subspace of $\mathbb{R}^3$.
+
+\subsection*{Solution}
+Substituting the two conditions into $\begin{bmatrix}
+        x \\y\\z
+    \end{bmatrix}$ yields
+\[
+    \begin{bmatrix}
+        3y \\y\\-2y
+    \end{bmatrix}=y\begin{bmatrix}
+        3 \\1\\-2
+    \end{bmatrix}
+\]
+Since $y$ is arbitrary, the given set of vectors is span$\left(\begin{bmatrix}
+            3 \\1\\-2
+        \end{bmatrix}\right)$ and is thus a subspace of $\mathbb{R}^3$.
+
+\subsection*{Subspaces Associated with Matrices}
+
+\subsection*{Definition}
+Let $A$ be an $m\times n$ matrix.
+\begin{enumerate}
+    \item The \textbf{row space} of $A$ is the subspace row($A$) of $\mathbb{R}^n$ spanned by the rows of $A$.
+    \item The \textbf{column space} of $A$ is the subspace col($A$) of $\mathbb{R}^m$ spanned by the columns of $A$.
+\end{enumerate}
+
+\subsection*{Example}
+Consider the matrix \[A=\begin{bmatrix}
+        1 & -1 \\
+        0 & 1  \\
+        3 & -3
+    \end{bmatrix}\]
+\begin{enumerate}[(a)]
+    \item Determine whether $\*b=\begin{bmatrix}
+                  1 \\2\\3
+              \end{bmatrix}$ is in the column space of $A$.
+    \item Determine whether $\*w=\begin{bmatrix}
+                  4 & 5
+              \end{bmatrix}$ is in the row space of $A$.
+    \item Describe row($A$) and col($A$).
+\end{enumerate}
+
+\subsection*{Solution}
+\begin{enumerate}[(a)]
+    \item \textbf{b} is a linear combination of the columns of $A$ if and only if the linear system $A\*x=\*b$ is consistent.
+          We row reduce the augmented matrix as follows: \[\left[\begin{array}{cc|c}
+                      1 & -1 & 1 \\
+                      0 & 1  & 2 \\
+                      3 & -3 & 3
+                  \end{array}\right]\to \left[\begin{array}{cc|c}
+                      1 & 0 & 3 \\
+                      0 & 1 & 2 \\
+                      0 & 0 & 0
+                  \end{array}\right]\]
+          Thus, the system is consistent. Therefore, \textbf{b} is in col($A$).
+    \item Elementary row operations simply create linear combinations of the rows of a matrix.
+          That is, they produce vectors only in the row space of the matrix. If the vector \textbf{w}
+          is in row($A$), then \textbf{w} is a linear combination of the rows of $A$, so if we augmente
+          $A$ by \textbf{w} as $\left[\frac{A}{\*w}\right]$, it will be possible to apply elementary row
+          operations to this augmented matrix to reduce it to $\left[\frac{A'}{0}\right]$ using only
+          elementary row operations of the form $R_i+kR_j$, where $i>j$
+
+          In this example, we have
+          \[
+              \left[\frac{A}{\*w}\right]=\begin{bmatrix}
+                  1 & -1 \\
+                  0 & 1  \\
+                  3 & -3 \\ \hline
+                  4 & 5
+              \end{bmatrix}\arrows2{R_3-3R_1}{R-4-4R_1}\begin{bmatrix}
+                  1 & -1 \\
+                  0 & 1  \\
+                  0 & 0  \\ \hline
+                  0 & 9
+              \end{bmatrix}\arrows1{R_4-9R_2}\begin{bmatrix}
+                  1 & -1 \\
+                  0 & 1  \\
+                  0 & 0  \\ \hline
+                  0 & 0
+              \end{bmatrix}
+          \]
+          Therefore, \textbf{w} is a linear combination of the rows of $A$, and thus \textbf{w} is in row($A$).
+    \item It is easy to check that, for any vector $\*w=\begin{bmatrix}
+                  x & y
+              \end{bmatrix}$, the augmented matrix $\left[\frac{A}{\*w}\right]$ reduces two
+          \[\begin{bmatrix}
+                  1 & 0 \\
+                  0 & 1 \\
+                  0 & 0 \\ \hline
+                  0 & 0
+              \end{bmatrix}\]
+          in a similar fashion. Therefore, every vector in $\mathbb{R}^2$ is in row($A$), and so $\text{row}(A)=\mathbb{R}^2$.
+\end{enumerate}
+
+\subsection*{Definition}
+Let $A$ be an $m\times n$ matrix. The \textbf{null space} of $A$ is the subspace of
+$\mathbb{R}^n$ consisting of solutions of the homogeneous linear system $A\*x=0$. It
+is denoted by null($A$).
+
+\subsection*{Basis}
+
+\subsection*{Definition}
+A \textbf{basis} for a subspace $S$ of $\mathbb{R}^n$ is a set of vectors in $A$ that
+\begin{enumerate}
+    \item spans $A$ and
+    \item is linearly independent
+\end{enumerate}
+
+\subsection*{Example}
+The standard unit vectors $\*e_1,\*e_2,\dots,\*e_n$ in $\mathbb{R}^n$ are linearly
+independent and span $\mathbb{R}^n$. Therefore, they form a basis for $\mathbb{R}^n$,
+called the \textbf{standard basis}.
+
+Following is a summary of the most effective procedure to use to find bases for the
+row space, the column space, and the null space of a matrix $A$.
+
+\begin{enumerate}
+    \item Find the reduced row echelon form $R$ of $A$.
+    \item Use the nonzero row vectors of $R$ to form a basis for row($A$).
+    \item Use the column vectors of $A$ that correspond to the columns of $R$
+          containing leading 1s to form a basis for col($A$).
+    \item Solve for the leading variables of $R\*x=0$ in terms of the free variables,
+          set the free variables equal to the parameters, substitute back into \textbf{x},
+          and write the result as a linera combination of $f$ vectors. These $f$ vectors form a basis for null($A$).
+\end{enumerate}
+
+\subsection*{Dimension and Rank}
+
+\subsection*{The Basis Theorem}
+Let $S$ be a subspace of $\mathbb{R}^n$. Then any two bases for $S$ have the same
+number of vectors.
+
+\subsection*{Definition}
+If $S$ is a subspace of $\mathbb{R}^n$, then the number of vectors in a basis for $S$
+is called the \textbf{dimension} of $S$, denoted by dim $S$.
+
+\subsection*{Example}
+Since the standard basis for $\mathbb{R}^n$ has $n$ vectors, dim $\mathbb{R}^n=n$.
+
+\subsection*{Definition}
+The \textbf{rank} of a matrix $A$ is the dimension of its row and column spaces
+and is denoted by rank($A$).
+
+\subsection*{Definition}
+The \textbf{nullity} of a matrix $A$ is the dimension of its null space and is denoted
+by nullity($A$).
+
+\subsection*{The Rank Theorem}
+If $A$ is an $m\times n$ matrix, then
+\[\text{rank}(A)+\text{nullity}(A)=n\]
+
+\subsection*{Proof}
+Let $R$ be the reduced row echelon form of $A$, and suppose that rank($A$)=$r$.
+Then $R$ has $r$ leading 1s, so there are $r$ leading variables and $n-r$ free
+variables in the solution to $A\*x=0$. Since dim(null($A$))=$n-r$, we have
+\[\text{rank}(A)+\text{nullity}(A)=r+(n-r)=n\]
+
+\subsection*{The Fundamental Theorem of Invertible Matrices}
+Let $A$ be an $n\times n$ matrix. THe following statements are equivalent:
+\begin{enumerate}[(a)]
+    \item $A$ is invertible.
+    \item $A\*x=\*b$ has a unique solution for every \textbf{b} in $\mathbb{R}^n$.
+    \item $A\*x=0$ has only the trivial solution.
+    \item The reduced row echelon form of $A$ is $I_n$.
+    \item $A$ is a product of elementary matrices.
+    \item rank($A$)=$n$
+    \item nullity($A$)=0
+    \item The column vectors of $A$ are linearly independent.
+    \item The column vectors of $A$ span $\mathbb{R}^n$.
+    \item The column vectors of $A$ form a basis for $\mathbb{R}^n$.
+    \item The row vectors of $A$ are linearly independent.
+    \item The row vectors of $A$ span $\mathbb{R}^n$.
+    \item The row vectors of $A$ form a basis for $\mathbb{R}^n$.
+\end{enumerate}
+
+\subsection*{Coordinates}
+
+\subsection*{Definition}
+Let $S$ be a subspace of $\mathbb{R}^n$ and let $\mathcal{B}=\left\{\*v_1,\*v_2,\dots,\*v_k\right\}$
+be a basis for $S$. Let \textbf{v} be a vector in $S$, and write
+$\*v=c_1\*v_1+c_2\*v_2+\dots+c_k\*v_k$. Then $c_1+c_2+\dots+c_k$ are called the
+\textbf{coordinates of v with respect to $\mathcal{B}$}, and the column vector
+\[
+    [\*v]_{\mathcal{B}}\begin{bmatrix}
+        c_1 \\c_2\\ \vdots\\c_k
+    \end{bmatrix}
+\]
+is called the \textbf{coordinate vectors of v with respect to $\mathcal{B}$}.
+
+\subsection*{Example}
+Let $\mathcal{E}=\left\{\*e_1+\*e_2+\*e_3\right\}$ be the standard basis for
+$\mathbb{R}^3$. Find the coordinate vector of \[\begin{bmatrix}
+        2 \\7\\4
+    \end{bmatrix}\] with respect to $\mathcal{E}$.
+
+\subsection*{Solution}
+Since $\*v=2\*e_1+7\*e_2+4\*e_3$, \[[\*v]_{\mathcal{E}}=\begin{bmatrix}
+        2 \\7\\4
+    \end{bmatrix}\]
+
+\section{Intro to Linear Transformations}
+
+\subsection*{Definition}
+A transformation $T:\mathbb{R}^n\to\mathbb{R}^m$ is called a \textbf{linear transformation} if
+\begin{enumerate}
+    \item $T(\*u+\*v)=T(\*u)+T(\*v)$ for all \textbf{u} and \textbf{v} in $\mathbb{R}^n$ and
+    \item $T(c\*v)=cT(\*v)$ for all \textbf{v} in $\mathbb{R}^n$ and all scalars $c$.
+\end{enumerate}
+
+\subsection*{Example}
+Let $F:\mathbb{R}^2\to\mathbb{R}^2$ be the transformation that sends each point to its
+reflection in the $x$-axis. Show that $F$ is a linear transformation.
+
+\subsection*{Solution}
+$F$ sends the point $(x,y)$ to the point $(x,-y)$. Thus, we write
+\[
+    F\begin{bmatrix}
+        x \\y
+    \end{bmatrix}=\begin{bmatrix}
+        x \\-y
+    \end{bmatrix}
+\]
+We could proceed to check that $F$ is linear, but it's faster to observe that
+\[
+    \begin{bmatrix}
+        x \\-y
+    \end{bmatrix}=x\begin{bmatrix}
+        1 \\0
+    \end{bmatrix}+y\begin{bmatrix}
+        0 \\-1
+    \end{bmatrix}=\begin{bmatrix}
+        1 & 0  \\
+        0 & -1
+    \end{bmatrix}\begin{bmatrix}
+        x \\y
+    \end{bmatrix}
+\]
+Therefore, $F\begin{bmatrix}
+        x \\y
+    \end{bmatrix}=A\begin{bmatrix}
+        x \\y
+    \end{bmatrix}$, where $A=\begin{bmatrix}
+        1 & 0  \\
+        0 & -1
+    \end{bmatrix}$, so $F$ is a matrix transformation. It now follows, that $F$ is a linear transformation.
+
+\subsection*{Theorem}
+Let $T:\mathbb{R}^m\to\mathbb{R}^n$ and $S:\mathbb{R}^n\to\mathbb{R}^p$ be linear transformations.
+Then $S\circ T:\mathbb{R}^m\to\mathbb{R}^p$ is a linear transformation. Moreover, their
+standard matrices are related by
+\[
+    [S\circ T]=[S][T]
+\]
+
+\subsection*{Inverse Transformations}
+
+\subsection*{Definition}
+Let $S$ and $S$ be linearl transformations form $\mathbb{R}^n$ to $\mathbb{R}^n$.
+Then $S$ and $T$ are \textbf{inverse transformations} if $S\circ T=I_n$ and $T\circ S=I_n$.
+
+\subsection*{Example}
+Find the standard matrix of a $60^\circ$ clockwise rotation about the origin in $\mathbb{R}^n$.
+
+\subsection*{Solution}
+The matrix of a $60^\circ$ counterclockwise rotation about the origin is
+\[
+    [R_{60}]\begin{bmatrix}
+        1/2        & -\sqrt{3}/2 \\
+        \sqrt{3}/2 & 1/2
+    \end{bmatrix}
+\]
+Since a $60^\circ$ clockwise rotation is the inverse of a $60^\circ$ counterclockwise rotation
+\[
+    [R_{-60}]=[(R_{60})^{-1}]=\begin{bmatrix}
+        1/2        & -\sqrt{3}/2 \\
+        \sqrt{3}/2 & 1/2
+    \end{bmatrix}^{-1}=\begin{bmatrix}
+        1/2         & \sqrt{3}/2 \\
+        -\sqrt{3}/2 & 1/2
+    \end{bmatrix}
+\]
